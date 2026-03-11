@@ -8,8 +8,12 @@ llm_client = LLMClient()
 GUTENDEX_URL = "https://gutendex.com/books/"
 
 def search_books_gutendex(query: str) -> list[dict]:
-    response = requests.get(GUTENDEX_URL, params={"search": query})
-
+    try:
+        response = requests.get(GUTENDEX_URL, params={"search": query}, timeout=10)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        raise ValueError(f"Erro ao buscar livro '{query}' no Gutendex: {e}") from e
+    
     if response.status_code != 200:
         raise ValueError(f"Erro ao buscar livro {query} no Gutendex")
 
@@ -23,24 +27,29 @@ def pick_best_match(query: str, candidates: list[dict]) -> dict | None:
         return None
     
     scored = []
+    normalized_query = query.lower().strip()
+
     for book in candidates:
-        score = fuzz.token_sort_ratio(query.lower(), book["title"].lower())
+        title = book.get("title", "").lower().strip()
+        score = fuzz.token_sort_ratio(normalized_query, title)
         scored.append((score, book))
     
     scored.sort(key=lambda x: x[0], reverse=True)
     best_score, best_book = scored[0]
-    
-    return best_book if best_score > 40 else None
+
+    return best_book if best_score >= 60 else None
 
 
 def search_book_by_name(query: str) -> BookBibliographicContext:
     normalized = llm_client.normalize_title(query)
-    search_term = f"{normalized['original_title']} {normalized['author_lastname']}"
-    
+    original_title = normalized["original_title"]
+    author_lastname = normalized.get("author_lastname")
+
+    search_term = f"{original_title} {author_lastname}" if author_lastname else original_title
+        
     candidates = search_books_gutendex(search_term)
-    
-    if not candidates:
-        candidates = search_books_gutendex(normalized["original_title"])
+    if not candidates and search_term != original_title:
+        candidates = search_books_gutendex(original_title)
     
     best = pick_best_match(normalized["original_title"], candidates)
     

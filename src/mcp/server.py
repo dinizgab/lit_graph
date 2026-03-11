@@ -1,7 +1,8 @@
 from fastmcp import FastMCP
 import wikipedia
+from wikipedia import DisambiguationError, PageError
 
-from src.models.models import BookBibliographicContext, BookPhilosophicalContext
+from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext
 from src.utils import search_book_by_name, LLMClient
 
 
@@ -32,7 +33,7 @@ def get_book_info(query: str) -> BookBibliographicContext:
 
     
 @server.tool()
-def get_book_historical_context(query: str) -> str:
+def get_book_historical_context(query: str) -> BookHistoricalContext:
     """
     Busca informações históricas sobre uma obra clássica pelo nome em qualquer idioma ou grafia.
     Dados como período histórico, ambiente cultural e contextos sociais da obra.
@@ -41,9 +42,18 @@ def get_book_historical_context(query: str) -> str:
     search_term = llm_client.normalize_title(query)["original_title"]
     
     wikipedia.set_lang("en")
-    wikipedia_page = wikipedia.page(search_term)   
+    try:
+        wikipedia_page = wikipedia.page(search_term, auto_suggest=False)
+    except  DisambiguationError as e:
+        wikipedia_page = wikipedia.page(e.options[0], auto_suggest=False)
+    except PageError:
+        raise ValueError(f"Não foi possível encontrar contexto histórico para '{query}'.")
     
-    return wikipedia_page.summary
+    return BookHistoricalContext(
+        work_title=search_term,
+        source="wikipedia",
+        summary=wikipedia_page.summary,
+    )
     
     
 @server.tool()
