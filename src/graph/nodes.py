@@ -4,6 +4,7 @@ from typing import cast
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
 from src.graph.state import LitGraphState
+from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext
 from src.utils.llm_client import LLMClient
 
 
@@ -13,7 +14,7 @@ llm_client = LLMClient()
 
 
 def supervisor(state: LitGraphState) -> dict:
-    query = state["user_query"].lower()
+    query = state.get("user_query", "").lower()
     
     route = llm_client.decide_route(query)
     
@@ -65,15 +66,15 @@ async def retriever(state: LitGraphState) -> dict:
 
 def automation(state: LitGraphState) -> dict:
     draft = llm_client.create_study_guide(
-        bibliographic_context=state["bibliographic_context"],
-        historical_context=state["historical_context"],
-        philosophical_context=state["philosophical_context"],
-        student_level=state["student_level"],
+        bibliographic_context=cast(BookBibliographicContext, state.get("bibliographic_context")),
+        historical_context=cast(BookHistoricalContext, state.get("historical_context")),
+        philosophical_context=cast(BookPhilosophicalContext, state.get("philosophical_context")),
+        student_level=cast(str, state.get("student_level")),
     )
 
     citations = [
         {"source": s["source"], "title": s.get("title", ""), "id": s.get("id")}
-        for s in state["retrieval_sources"]
+        for s in cast(list, state.get("retrieval_sources"))
     ]
 
     return {
@@ -85,12 +86,12 @@ def automation(state: LitGraphState) -> dict:
 def safety(state: LitGraphState) -> dict:
     disclaimer = ""
  
-    if state["philosophical_context"].themes:
+    if cast(BookPhilosophicalContext, state.get("philosophical_context")).themes:
         disclaimer += (
             "⚠️ As interpretações filosóficas são plausíveis com base nos temas "
             "da obra, mas não constituem consenso acadêmico. "
         )
-    if state["historical_context"].summary:
+    if cast(BookHistoricalContext, state.get("historical_context")).summary:
         disclaimer += (
             "ℹ️ O contexto histórico foi obtido da Wikipedia e pode conter "
             "imprecisões. Consulte fontes especializadas para pesquisa acadêmica."
@@ -133,11 +134,11 @@ def self_check(state: LitGraphState) -> dict:
         }
 
     result = llm_client.self_check_answer(
-        user_query=state.get("user_query", ""),
-        draft_answer=draft,
-        retrieved_chunks=chunks,
-        book_title=state.get("book_title", ""),
-        student_level=state.get("student_level", "curioso"),
+        user_query=cast(str, state.get("user_query", "")),
+        draft_answer=cast(str, draft),
+        retrieved_chunks=cast(list, chunks),
+        book_title=cast(str, state.get("book_title", "")),
+        student_level=cast(str, state.get("student_level", "curioso")),
     )
 
     if result.grounded and result.suggested_action == "accept":
