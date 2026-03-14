@@ -63,3 +63,6 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
     """
     book = search_book_by_name(query)
     return llm_client.generate_philosophical_context(book.title, book.summaries, book.subjects)
+
+
+# TODO -  Adicionar tool para fazer rag nos livros indexados aqui
