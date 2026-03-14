@@ -167,6 +167,10 @@ def self_check(state: LitGraphState) -> dict:
         "self_check_attempts": attempts + 1,
     }
     
+    
+def output(state: LitGraphState) -> dict:
+    return {"final_answer": state.get("draft_answer", "")}
+
  
 def refuse(state: LitGraphState) -> dict:
     msg = state.get("error") or (

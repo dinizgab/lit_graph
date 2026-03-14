@@ -2,6 +2,7 @@ from langgraph.graph import StateGraph, END
 
 from src.graph.state import LitGraphState
 from src.graph.nodes import (
+    output,
     supervisor,
     retriever,
     automation,
@@ -61,6 +62,7 @@ def build_graph():
     graph.add_node("safety", safety)
     graph.add_node("answerer", answerer)
     graph.add_node("self_check", self_check)
+    graph.add_node("output", output)
     graph.add_node("refuse", refuse)
 
     graph.set_entry_point("supervisor")
