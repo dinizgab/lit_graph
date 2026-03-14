@@ -1,7 +1,7 @@
 from typing import Any, Dict, List
 
 from openai import OpenAI
-from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, SelfCheckResult
+from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult
 
 
 class LLMClient():
@@ -90,14 +90,14 @@ class LLMClient():
                     "content": f"Consulta: {query}",
                 },
             ],
-            text_format=str,
+            text_format=RouteDecision,
         )
 
         route = response.output_parsed
         if route is None:
             raise ValueError("Falha ao decidir rota para a consulta.")
         
-        return route.strip().lower()
+        return route.intent
     
     
     def create_study_guide(

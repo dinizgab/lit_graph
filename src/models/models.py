@@ -61,3 +61,7 @@ class SelfCheckResult(BaseModel):
     final_answer: str = Field(
         description="Resposta final aprovada ou versão revisada da resposta, sempre em português"
     )
+    
+
+class RouteDecision(BaseModel):
+    intent: Literal["qa", "guide", "refuse"]
