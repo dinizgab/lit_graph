@@ -1,5 +1,6 @@
-from rapidfuzz import fuzz
+import json
 import requests
+from rapidfuzz import fuzz
 
 from src.models.models import BookBibliographicContext
 from src.utils.llm_client import LLMClient
@@ -60,3 +61,18 @@ def search_book_by_name(query: str) -> BookBibliographicContext:
         )
     
     return BookBibliographicContext.model_validate(best)
+
+
+def parse_mcp_response(raw, model_class):
+    if isinstance(raw, list):
+        content = raw[0]
+        text = content.get("text") if isinstance(content, dict) else content
+    elif isinstance(raw, str):
+        text = raw
+    else:
+        return raw
+    
+    if text is None:
+        raise ValueError("Cannot parse None as JSON")
+    
+    return model_class(**json.loads(text))

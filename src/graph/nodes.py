@@ -5,6 +5,7 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 
 from src.graph.state import LitGraphState
 from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext
+from src.utils import parse_mcp_response
 from src.utils.llm_client import LLMClient
 
 
@@ -37,49 +38,54 @@ async def retriever(state: LitGraphState) -> dict:
 
     try:
         bib = await tools["get_book_info"].ainvoke({"query": query})
+        bib = parse_mcp_response(bib, BookBibliographicContext)
     except Exception as e:
         return {"error": str(e), "intent": "refuse"}
 
     try:
         hist = await tools["get_book_historical_context"].ainvoke({"query": query})
+        hist = parse_mcp_response(hist, BookHistoricalContext)
     except Exception:
         hist = {}
 
     try:
         phil = await tools["get_book_philosophical_context"].ainvoke({"query": query})
+        phil = parse_mcp_response(phil, BookPhilosophicalContext)
     except Exception:
         phil = {}
 
 
     # TODO - Substituir aqui pela chamada do mcp para a funcao que faz RAG
-    chunks = bib.get("summaries", [])[:3]
-    sources = [{"source": "gutendex", "id": bib.get("gutenberg_id"), "title": bib.get("title")}]
-
+    if bib.summaries:
+        chunks = bib.summaries[:3]
+        sources = [{"source": "gutendex", "id": bib.gutenberg_id, "title": bib.title}]
+    
     return {
         "bibliographic_context": bib,
         "historical_context": hist,
         "philosophical_context": phil,
-        "retrieved_chunks": chunks,
-        "retrieval_sources": sources,
+        #"retrieved_chunks": chunks,
+        #"retrieval_sources": sources,
     }
 
 
 def automation(state: LitGraphState) -> dict:
     draft = llm_client.create_study_guide(
-        bibliographic_context=cast(BookBibliographicContext, state.get("bibliographic_context")),
-        historical_context=cast(BookHistoricalContext, state.get("historical_context")),
-        philosophical_context=cast(BookPhilosophicalContext, state.get("philosophical_context")),
-        student_level=cast(str, state.get("student_level")),
+        bibliographic_context=state.get("bibliographic_context"),
+        historical_context=state.get("historical_context"),
+        philosophical_context=state.get("philosophical_context"),
+        student_level=state.get("student_level"),
     )
 
-    citations = [
-        {"source": s["source"], "title": s.get("title", ""), "id": s.get("id")}
-        for s in cast(list, state.get("retrieval_sources"))
-    ]
+    # TODO - Adicionar aqui a logica de pegar o resultado da funcao de RAG e montar as citacoes corretamente
+    #citations = [
+    #    {"source": s["source"], "title": s.get("title", ""), "id": s.get("id")}
+    #    for s in cast(list, state.get("retrieval_sources"))
+    #]
 
     return {
         "draft_answer": draft,
-        "citations": citations,
+        #"citations": citations,
     }
     
     
