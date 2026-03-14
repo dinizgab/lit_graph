@@ -121,15 +121,7 @@ class LLMClient():
         historical_summary = historical_context.summary if historical_context.summary else "Não disponível"
         historical_summary = historical_summary[:400] if historical_summary else "Não disponível"
 
-        if isinstance(philosophical_context, BookPhilosophicalContext):
-            themes = [theme.theme for theme in philosophical_context.themes]
-        else:
-            themes = [
-                theme.theme if theme.theme else ""
-                for theme in philosophical_context.themes
-                if theme.theme
-            ]
-
+        themes = [theme.theme for theme in philosophical_context.themes] if philosophical_context.themes else []
         themes_text = ", ".join(themes) if themes else "Não disponíveis"
 
         context_block = f"""
