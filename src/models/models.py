@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Literal
 
 
 class Author(BaseModel):
@@ -43,3 +43,21 @@ class BookHistoricalContext(BaseModel):
 class NormalizedTitle(BaseModel):
     original_title: str
     author_lastname: str | None = None
+    
+    
+class UnsupportedClaim(BaseModel):
+    claim_excerpt: str = Field(description="Trecho da resposta que parece não estar sustentado pelas evidências")
+    reason: str = Field(description="Por que o trecho parece inadequado, inventado ou fraco")
+    severity: Literal["low", "medium", "high"]
+
+
+class SelfCheckResult(BaseModel):
+    grounded: bool = Field(description="Se a resposta está adequadamente sustentada pelos trechos recuperados")
+    confidence: float = Field(description="Confiança de 0 a 1 na avaliação")
+    issues: List[UnsupportedClaim] = Field(default_factory=list)
+    suggested_action: Literal["accept", "retry", "revise"] = Field(
+        description="accept = pode seguir; retry = buscar novamente; revise = regenerar com as mesmas evidências"
+    )
+    final_answer: str = Field(
+        description="Resposta final aprovada ou versão revisada da resposta, sempre em português"
+    )
