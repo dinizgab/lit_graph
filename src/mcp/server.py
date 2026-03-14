@@ -71,4 +71,8 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
 # TODO -  Adicionar tool para fazer rag nos livros indexados aqui
 
 if __name__ == "__main__":
-    server.run()
+    server.run(
+        transport="http",
+        host="127.0.0.1",
+        port=8000,
+    )
