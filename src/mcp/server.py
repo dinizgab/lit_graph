@@ -1,6 +1,9 @@
-from fastmcp import FastMCP
+from dotenv import load_dotenv
+load_dotenv()
+
 import wikipedia
 from wikipedia import DisambiguationError, PageError
+from fastmcp import FastMCP
 
 from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext
 from src.utils import search_book_by_name, LLMClient
@@ -66,3 +69,6 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
 
 
 # TODO -  Adicionar tool para fazer rag nos livros indexados aqui
+
+if __name__ == "__main__":
+    server.run()
