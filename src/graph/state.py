@@ -3,7 +3,7 @@ from typing import Literal, TypedDict
 from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext
 
 
-class LitGraphState(TypedDict):
+class LitGraphState(TypedDict, total=False):
     user_query: str
     book_title: str
     student_level: Literal["fundamental", "medio", "superior", "curioso"]
