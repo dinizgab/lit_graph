@@ -1,5 +1,6 @@
 from typing import Any, Dict, List
 
+from langsmith import traceable
 from openai import OpenAI
 from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult
 
@@ -8,7 +9,8 @@ class LLMClient():
     def __init__(self, model: str = "gpt-5.4"):
         self.model = model
         self.client = OpenAI()
-    
+        
+    @traceable(run_type="llm", name="normalize_title")
     def normalize_title(self, query: str) -> dict:
         response = self.client.responses.parse(
             model="gpt-5.4",
@@ -71,7 +73,7 @@ class LLMClient():
 
         return parsed
     
-    
+    @traceable(run_type="llm", name="decide_route")    
     def decide_route(self, query: str) -> str:
         response = self.client.responses.parse(
             model=self.model,
@@ -99,7 +101,7 @@ class LLMClient():
         
         return route.intent
     
-    
+    @traceable(run_type="llm", name="create_study_guide")  
     def create_study_guide(
         self,
         bibliographic_context: BookBibliographicContext,
@@ -178,7 +180,7 @@ class LLMClient():
 
         return response.output_text.strip()
     
-    
+    @traceable(run_type="llm", name="self_check_answer")
     def self_check_answer(
         self,
         user_query: str,

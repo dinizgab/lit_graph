@@ -5,7 +5,8 @@ import asyncio
 import streamlit as st
 from src.graph.graph import build_graph
 from src.graph.state import LitGraphState
- 
+from langsmith import traceable
+
 st.set_page_config(
     page_title="LitGraph",
     page_icon="📖",
@@ -15,6 +16,10 @@ st.set_page_config(
 @st.cache_resource
 def get_graph():
     return build_graph()
+
+@traceable(name="litgraph_run")
+async def run_graph(graph, state):
+    return await graph.ainvoke(state)
  
 graph = get_graph()
  
@@ -75,7 +80,7 @@ if prompt := st.chat_input("Pergunte sobre uma obra ou peça um guia de estudo�
                 "student_level": student_level if student_level in ("fundamental", "medio", "superior", "curioso") else "curioso",
                 "self_check_attempts": 0,
             })
-            result = asyncio.run(graph.ainvoke(initial_state))
+            result = asyncio.run(run_graph(graph, initial_state))
             final = result.get("final_answer") or result.get("error", "Sem resposta.")
 
         st.markdown(final)
