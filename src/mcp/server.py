@@ -72,7 +72,6 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
 def search_book_content(
         query: str,
         book_title: str | None = None,
-        student_level: str = "curioso",
 ) -> list[str]:
     """
     Busca trechos relevantes nos livros indexados usando RAG.
@@ -84,7 +83,6 @@ def search_book_content(
         query: pergunta ou trecho a buscar (ex: 'O que motiva Raskolnikov?')
         book_title: título canônico para filtrar a busca (ex: '2554_crime_and_punishment').
                     Se omitido, busca em toda a base indexada.
-        student_level: nível do leitor — 'curioso', 'estudante' ou 'acadêmico'.
 
     Exemplos:
         query='qual é o monólogo inicial do subsolo?', book_title='600_notes_from_underground'

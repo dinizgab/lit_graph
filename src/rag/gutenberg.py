@@ -13,7 +13,6 @@ import requests
 
 BOOKS_DIR = Path("data/books")
 
-# Lista canônica de livros do projeto
 GUTENBERG_IDS = [
     1497, 1656, 1657, 1658, 1600, 1636, 1643, 1672, 1572, 1750,
     8438, 6762, 6763, 1974, 1173, 2412, 2413, 2414, 2415, 3296,
@@ -29,7 +28,6 @@ GUTENBERG_MIRRORS = [
     "https://www.gutenberg.org/files/{id}/{id}.txt",
 ]
 
-# Marcadores padrão que delimitam o conteúdo real do livro
 _START_MARKERS = [
     r"\*\*\* START OF THE PROJECT GUTENBERG EBOOK .+? \*\*\*",
     r"\*\*\* START OF THIS PROJECT GUTENBERG EBOOK .+? \*\*\*",
@@ -41,7 +39,6 @@ _END_MARKERS = [
 
 
 def _strip_gutenberg_boilerplate(text: str) -> str:
-    """Remove cabeçalho e rodapé padrão do Gutenberg."""
     for pattern in _START_MARKERS:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -58,7 +55,6 @@ def _strip_gutenberg_boilerplate(text: str) -> str:
 
 
 def _slugify(text: str) -> str:
-    """Converte título em nome de arquivo seguro."""
     text = text.lower()
     text = re.sub(r"[^\w\s-]", "", text)
     text = re.sub(r"\s+", "_", text.strip())
@@ -66,23 +62,8 @@ def _slugify(text: str) -> str:
 
 
 def download_book(gutenberg_id: int, books_dir: Path = BOOKS_DIR) -> Path:
-    """
-    Baixa um livro do Gutenberg pelo ID numérico.
-    Salva em books_dir e retorna o caminho do arquivo.
-
-    Args:
-        gutenberg_id: ID numérico do livro no Gutenberg (ex: 2554)
-        books_dir: pasta de destino (criada automaticamente se não existir)
-
-    Returns:
-        Path do arquivo .txt salvo.
-
-    Raises:
-        RuntimeError: se nenhum mirror retornar o texto.
-    """
     books_dir.mkdir(parents=True, exist_ok=True)
 
-    # Tenta cada mirror até um funcionar
     text = None
     for url_template in GUTENBERG_MIRRORS:
         url = url_template.format(id=gutenberg_id)
@@ -102,9 +83,7 @@ def download_book(gutenberg_id: int, books_dir: Path = BOOKS_DIR) -> Path:
 
     text = _strip_gutenberg_boilerplate(text)
 
-    # Extrai título da primeira linha não vazia
     first_line = next((l.strip() for l in text.splitlines() if l.strip()), str(gutenberg_id))
-    # Remove prefixo comum como "Title: " se vier do cabeçalho
     title = re.sub(r"^(title|by)[:\s]+", "", first_line, flags=re.IGNORECASE).strip()
     slug = _slugify(title) or str(gutenberg_id)
 
@@ -120,21 +99,8 @@ def download_all(
         books_dir: Path = BOOKS_DIR,
         delay: float = 1.5,
 ) -> dict[int, Path]:
-    """
-    Baixa uma lista de livros do Gutenberg.
-    Respeita um delay entre requisições para não sobrecarregar o servidor.
-
-    Args:
-        gutenberg_ids: lista de IDs numéricos
-        books_dir: pasta de destino
-        delay: segundos de espera entre downloads (padrão: 1.5s)
-
-    Returns:
-        Dict {gutenberg_id: Path do arquivo salvo}
-    """
     results = {}
     for i, gid in enumerate(gutenberg_ids):
-        # Pula se já foi baixado anteriormente
         existing = list(books_dir.glob(f"{gid}_*.txt"))
         if existing:
             print(f"[gutenberg] ID {gid} já existe em {existing[0]}, pulando.")
@@ -147,7 +113,6 @@ def download_all(
         except RuntimeError as e:
             print(f"[gutenberg] ERRO: {e}")
 
-        # Delay entre requisições (exceto na última)
         if i < len(gutenberg_ids) - 1:
             time.sleep(delay)
 

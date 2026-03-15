@@ -1,18 +1,9 @@
-"""
-Retriever do RAG.
-- Recebe uma query em texto
-- Gera embedding local
-- Busca no ChromaDB por similaridade cosseno
-- Suporta filtro por book_title (opcional)
-"""
-
 from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
 import chromadb
 
 from src.rag.indexer import CHROMA_DIR, COLLECTION, EMBED_MODEL
 
-# Carrega embedder uma única vez (singleton por processo)
 _embedder: SentenceTransformer | None = None
 
 
@@ -39,17 +30,6 @@ def retrieve_chunks(
         book_title: str | None = None,
         top_k: int = 6,
 ) -> list[str]:
-    """
-    Recupera os chunks mais relevantes para a query.
-
-    Args:
-        query: pergunta ou trecho a buscar
-        book_title: se informado, filtra somente os chunks desse livro
-        top_k: número máximo de chunks a retornar
-
-    Returns:
-        Lista de strings com os trechos mais relevantes.
-    """
     embedder = _get_embedder()
     query_embedding = embedder.encode([query]).tolist()
 
@@ -67,10 +47,9 @@ def retrieve_chunks(
     docs = results.get("documents", [[]])[0]
     distances = results.get("distances", [[]])[0]
 
-    # Filtra chunks com similaridade baixa (distância cosseno > 0.6 = pouco relevante)
     filtered = [
         doc for doc, dist in zip(docs, distances)
         if dist <= 0.6 and doc and doc.strip()
     ]
 
-    return filtered or docs  # fallback: retorna tudo se filtro zerar
+    return filtered or docs

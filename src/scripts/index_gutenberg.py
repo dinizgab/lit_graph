@@ -1,17 +1,3 @@
-"""
-Script para baixar livros do Project Gutenberg e indexá-los no ChromaDB.
-
-Uso:
-    # Baixa e indexa IDs específicos
-    python scripts/index_gutenberg.py --ids 2554 1342 4280
-
-    # Baixa e indexa a partir de um arquivo com um ID por linha
-    python scripts/index_gutenberg.py --file config/gutenberg_ids.txt
-
-    # Só baixa, sem indexar
-    python scripts/index_gutenberg.py --ids 2554 --no-index
-"""
-
 import argparse
 from pathlib import Path
 
@@ -54,17 +40,14 @@ def main():
         print("(usando lista padrão de GUTENBERG_IDS)")
     print(f"\n→ {len(ids)} livros para processar: {ids}\n")
 
-    # 1. Download
     downloaded = download_all(ids, books_dir=BOOKS_DIR, delay=args.delay)
 
     if args.no_index:
         print("\n✓ Download concluído. Indexação pulada (--no-index).")
         return
 
-    # 2. Indexação
     print("\n→ Iniciando indexação no ChromaDB...\n")
     for gid, file_path in downloaded.items():
-        # book_title = nome do arquivo sem extensão (ex: "2554_crime_and_punishment")
         book_title = file_path.stem
         try:
             n = index_book(file_path, book_title)
