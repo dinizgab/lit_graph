@@ -65,3 +65,57 @@ class SelfCheckResult(BaseModel):
 
 class RouteDecision(BaseModel):
     intent: Literal["qa", "guide", "refuse"]
+    
+
+class StudyPlanStep(BaseModel):
+    order: int
+    title: str
+    objective: str
+
+
+class StudyPlan(BaseModel):
+    reading_goal: str
+    target_level: Literal["fundamental", "medio", "superior", "curioso"]
+    steps: List[StudyPlanStep] = Field(default_factory=list)
+
+
+class CharacterCard(BaseModel):
+    name: str
+    role_in_story: str
+    central_trait: str
+    evidence_excerpt: str = ""
+
+
+class ThemeCard(BaseModel):
+    theme: str
+    explanation: str
+    evidence_excerpt: str = ""
+
+
+class PassageCard(BaseModel):
+    label: str
+    why_it_matters: str
+    evidence_excerpt: str = ""
+
+
+class ReviewQuestion(BaseModel):
+    question: str
+    skill: str
+
+
+class StudyGuideExtraction(BaseModel):
+    narrative_summary: str
+    characters: List[CharacterCard] = Field(default_factory=list)
+    themes: List[ThemeCard] = Field(default_factory=list)
+    key_passages: List[PassageCard] = Field(default_factory=list)
+    review_questions: List[ReviewQuestion] = Field(default_factory=list)
+
+
+class ChecklistItem(BaseModel):
+    item: str
+    purpose: str
+    done: bool = False
+
+
+class StudyChecklist(BaseModel):
+    items: List[ChecklistItem] = Field(default_factory=list)
