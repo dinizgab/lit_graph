@@ -16,22 +16,24 @@ llm_client = LLMClient()
 
 def supervisor(state: LitGraphState) -> dict:
     query = state.get("user_query", "").lower()
-    
+
     route = llm_client.decide_route(query)
-    
+
     return {"intent": route}
 
 
 async def retriever(state: LitGraphState) -> dict:
     query = state.get("book_title") or state.get("user_query", "")
-    
+    book_title = state.get("book_title")
+    student_level = state.get("student_level", "curioso")
+
     client = MultiServerMCPClient(
         {
             "lit_graph": {
-                "url": MCP_SERVER_URL,
-                "transport": "http",
+                "url": f"{MCP_SERVER_URL}/mcp",
+                "transport": "streamable_http",
             }
-        }, # type: ignore
+        },
     )
 
     tools = {t.name: t for t in await client.get_tools()}
@@ -54,23 +56,32 @@ async def retriever(state: LitGraphState) -> dict:
     except Exception:
         phil = {}
 
+    # RAG — busca trechos reais dos livros indexados
+    try:
+        await tools["search_book_content"].ainvoke({
+            "query": state.get("user_query", query),
+            "book_title": book_title,
+            "student_level": student_level,
+        })
+        from src.rag.retriever import retrieve_chunks
+        chunks = retrieve_chunks(
+            query=state.get("user_query", query),
+            book_title=book_title,
+            top_k=6,
+        )
+    except Exception:
+        chunks = []
 
-    # TODO - Substituir aqui pela chamada do mcp para a funcao que faz RAG
-    chunks = []
-    sources = []
-    if bib.summaries:
-        chunks = [s for s in bib.summaries[:3] if s and s.strip()]
-        sources = [
-            {
-                "source": "gutendex",
-                "title": bib.title,
-                "id": bib.gutenberg_id,
-                "excerpt": summary[:300],
-            }
-            for summary in chunks
-        ]
+    sources = [
+        {
+            "source": "gutenberg",
+            "title": bib.title,
+            "id": bib.gutenberg_id,
+            "excerpt": chunk[:300],
+        }
+        for chunk in chunks[:3]
+    ]
 
-    
     return {
         "bibliographic_context": bib,
         "historical_context": hist,
@@ -143,13 +154,11 @@ def automation(state: LitGraphState) -> dict:
         "draft_answer": draft,
         "citations": citations,
     }
-    
-    
+
+
 def safety(state: LitGraphState) -> dict:
     disclaimer = ""
-    
-    
- 
+
     if cast(BookPhilosophicalContext, state.get("philosophical_context")).themes:
         disclaimer += (
             "As interpretações filosóficas são plausíveis com base nos temas "
@@ -160,7 +169,7 @@ def safety(state: LitGraphState) -> dict:
             "O contexto histórico foi obtido da Wikipedia e pode conter "
             "imprecisões. Consulte fontes especializadas para pesquisa acadêmica."
         )
- 
+
     return {"safety_disclaimer": disclaimer, "is_safe": True}
 
 
@@ -266,12 +275,12 @@ def self_check(state: LitGraphState) -> dict:
         "self_check_passed": False,
         "self_check_attempts": attempts + 1,
     }
-    
-    
+
+
 def output(state: LitGraphState) -> dict:
     return {"final_answer": state.get("draft_answer", "")}
 
- 
+
 def refuse(state: LitGraphState) -> dict:
     msg = state.get("error") or (
         "Desculpe, só consigo responder perguntas sobre obras literárias clássicas "
