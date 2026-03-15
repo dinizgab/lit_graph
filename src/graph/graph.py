@@ -53,6 +53,12 @@ def route_after_self_check(state: LitGraphState) -> str:
     return "retriever"
 
 
+def route_after_answerer(state: LitGraphState) -> str:
+    if state.get("enable_self_check"):
+        return "self_check"
+    return "output"
+
+
 def build_graph():
     graph = StateGraph(LitGraphState)
 
@@ -88,7 +94,14 @@ def build_graph():
 
     graph.add_edge("automation", "safety")
     graph.add_edge("safety", "answerer")
-    graph.add_edge("answerer", "self_check")
+    graph.add_conditional_edges(
+        "answerer",
+        route_after_answerer,
+        {
+            "self_check": "self_check",
+            "output": "output",
+        },
+    )
 
     graph.add_conditional_edges(
         "self_check",
