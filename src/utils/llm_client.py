@@ -50,7 +50,7 @@ class LLMClient():
             )
  
         response = self.client.responses.parse(
-            model="gpt-5.4",
+            model="gpt-5-mini",
             input=[
                 {
                     "role": "system",

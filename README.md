@@ -114,3 +114,50 @@ A partir da terceira rodada (`rag_eval_0003`), o pipeline passou a usar o cache 
 - Investigar a classificação da pergunta 10 — o supervisor pode estar roteando para `refuse` por "Confissão" parecer contexto religioso/espiritual e não literário.
 - Reranker (ex.: `bge-reranker`) para melhorar `context_precision` além de 0.16.
 - Ampliar o dataset para ≥ 20 perguntas para N mais robusto em todas as métricas.
+- Enriquecer o prompt do usuario com mais informacao para ser utilizada no RAG nos livros e retornar informacoes mais relevantes para a pergunta dele.
+
+## Avaliação de Automação
+
+A automação do LitGraph corresponde à rota `guide`, ativada quando o supervisor detecta a intenção de gerar um guia de estudo. O nó `automation` executa um workflow sequencial de 4 steps para produzir um documento estruturado com citações do texto original.
+
+### Workflow de automação
+
+```
+retriever → automation → safety → answerer → self_check → output
+```
+
+O nó `automation` executa sempre os seguintes steps internos, rastreados em `automation_trace`:
+
+| Step | Função | Descrição |
+|------|--------|-----------|
+| 1 | `build_study_plan` | Gera plano de leitura em 4–6 etapas adaptado ao nível do aluno |
+| 2 | `extract_study_guide_elements` | Extrai personagens, temas, passagens-chave e perguntas de revisão |
+| 3 | `build_revision_checklist` | Transforma o plano em checklist de 5–8 itens de revisão |
+| 4 | `render_structured_study_guide` | Renderiza o guia final em português com 7 seções fixas |
+
+### Tarefas avaliadas
+
+| # | Tarefa | Nível | Sucesso | Steps | Lat (s) | Obs |
+|---|--------|-------|:-------:|:-----:|:-------:|-----|
+| 1 | Guia d'A República de Platão | superior | ✓ | 4 | 284,26 | — |
+| 2 | Guia da Ética a Nicômaco de Aristóteles | fundamental | ✗ | 0 | 18,72 | Falha no retriever¹ |
+| 3 | Guia de Assim Falou Zaratustra (Nietzsche) | médio | ✓ | 4 | 285,95 | — |
+| 4 | Guia d'Os Irmãos Karamazov (Dostoiévski) | superior | ✓ | 4 | 362,00 | — |
+
+### Métricas de automação
+
+| Métrica | Valor |
+|---------|-------|
+| Taxa de sucesso | 3/4 (75%) |
+| Steps médios | 3,0 |
+| Latência média | 237,73 s |
+
+> ¹ **Tarefa 2 — falha no retriever, não na automação.** A Ética a Nicômaco falhou com 0 steps em 18 s — o pipeline interrompeu antes de chegar ao nó `automation`. O `book_title` do dataset (`"Nicomachean Ethics"`) diverge do título registrado no Gutenberg (`"The Ethics of Aristotle by Aristotle"`), causando erro de lookup no cache e roteamento para `refuse`. As 3 tarefas bem-sucedidas completaram todas as 4 etapas do workflow sem falha.
+
+## Stack e decisões técnicas
+
+### LLM — OpenAI em vez de Ollama local
+
+A especificação do projeto sugere o uso de modelos open-source via Ollama (Llama 3.x, Qwen2.5, Mistral etc.) como preferência. O LitGraph utiliza a API da OpenAI (`gpt-5-mini`)por uma limitação de infraestrutura: o corpus do projeto inclui obras densas de filosofia clássica e literatura russa em inglês, e as chamadas encadeadas do pipeline (normalize → answer → self-check → translate) exigem um modelo com forte capacidade de reasoning e seguimento de instruções em múltiplos idiomas. Rodar um modelo local com esse nível de qualidade exigiria hardware com GPU dedicada (mínimo 16 GB VRAM para modelos 13B+), o que não estava disponível no ambiente de desenvolvimento.
+
+Os embeddings, no entanto, rodam inteiramente local via `sentence-transformers` (`all-MiniLM-L6-v2`, HuggingFace), conforme exigido pela spec — nenhuma chamada externa (com excessao das chamadas para o gutendex) é feita na etapa de indexação ou recuperação de chunks.

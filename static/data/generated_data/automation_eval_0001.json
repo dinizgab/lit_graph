@@ -1,0 +1,90 @@
+{
+  "evaluated_at": "2026-03-16T22:16:33.572727Z",
+  "n_tasks": 4,
+  "metrics": {
+    "success_rate": 0.75,
+    "n_success": 3,
+    "avg_steps": 3.0,
+    "avg_latency_s": 237.733,
+    "min_latency_s": 18.721,
+    "max_latency_s": 361.999
+  },
+  "details": [
+    {
+      "question": "Gere um guia de estudo d'A República de Platão para o ensino superior.",
+      "book_title": "The Republic",
+      "student_level": "superior",
+      "gutenberg_id": 1497,
+      "success": true,
+      "steps_count": 4,
+      "steps_ok": [
+        "build_study_plan",
+        "extract_study_guide_elements",
+        "build_revision_checklist",
+        "render_structured_study_guide"
+      ],
+      "missing_steps": [],
+      "has_output": true,
+      "latency_s": 284.265,
+      "error": null,
+      "answer_preview": "Versão revisada e fiel às evidências\n\n1. Objetivo de leitura\n- Ler e analisar sistematicamente The Republic, identificando argumentos centrais sobre justiça, a construção de um modelo de Estado ideal, as investigações epistemológicas/metafísicas implícitas no texto, a correspondência entre cidade e "
+    },
+    {
+      "question": "Gere um guia de estudo da Ética a Nicômaco de Aristóteles para leitores iniciantes.",
+      "book_title": "Nicomachean Ethics",
+      "student_level": "fundamental",
+      "gutenberg_id": 8438,
+      "success": false,
+      "steps_count": 0,
+      "steps_ok": [],
+      "missing_steps": [
+        "build_revision_checklist",
+        "build_study_plan",
+        "extract_study_guide_elements",
+        "render_structured_study_guide"
+      ],
+      "has_output": false,
+      "latency_s": 18.721,
+      "error": "Error calling tool 'get_book_info': Nenhuma obra encontrada para: 'Nicomachean Ethics' (buscado como: 'Nicomachean Ethics')",
+      "answer_preview": "Error calling tool 'get_book_info': Nenhuma obra encontrada para: 'Nicomachean Ethics' (buscado como: 'Nicomachean Ethics')"
+    },
+    {
+      "question": "Gere um guia de estudo de Assim Falou Zaratustra de Nietzsche para o ensino médio.",
+      "book_title": "Thus Spoke Zarathustra",
+      "student_level": "medio",
+      "gutenberg_id": 1998,
+      "success": true,
+      "steps_count": 4,
+      "steps_ok": [
+        "build_study_plan",
+        "extract_study_guide_elements",
+        "build_revision_checklist",
+        "render_structured_study_guide"
+      ],
+      "missing_steps": [],
+      "has_output": true,
+      "latency_s": 285.947,
+      "error": null,
+      "answer_preview": "Versão revisada e fiel às evidências (guia de estudo para ensino médio — Thus Spoke Zarathustra)\n\n1. Objetivo de leitura\n- Ler e compreender, em nível médio, as ideias centrais e o estilo figurado de Thus Spake Zarathustra, identificando conceitos-chave presentes nas passagens recuperadas (Übermensc"
+    },
+    {
+      "question": "Gere um guia de estudo d'Os Irmãos Karamazov de Dostoiévski para o ensino superior.",
+      "book_title": "The Brothers Karamazov",
+      "student_level": "superior",
+      "gutenberg_id": 28054,
+      "success": true,
+      "steps_count": 4,
+      "steps_ok": [
+        "build_study_plan",
+        "extract_study_guide_elements",
+        "build_revision_checklist",
+        "render_structured_study_guide"
+      ],
+      "missing_steps": [],
+      "has_output": true,
+      "latency_s": 361.999,
+      "error": null,
+      "answer_preview": "Versão revisada e mais fiel às evidências (em português)\n\nGuia de estudo compacto para ensino superior — The Brothers Karamazov (baseado apenas nas EVIDÊNCIAS 1–6 fornecidas)\n\n1. Objetivo de leitura\n- Ler e analisar The Brothers Karamazov com foco na estrutura, personagens e nas questões teológicas "
+    }
+  ]
+}
