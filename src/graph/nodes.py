@@ -182,12 +182,24 @@ def automation(state: LitGraphState) -> dict:
 def safety(state: LitGraphState) -> dict:
     disclaimer = ""
 
-    if cast(BookPhilosophicalContext, state.get("philosophical_context")).themes:
+    philosophical_context = state.get("philosophical_context")
+    historical_context = state.get("historical_context")
+
+    if (
+        philosophical_context
+        and hasattr(philosophical_context, "themes")
+        and philosophical_context.themes
+    ):
         disclaimer += (
             "As interpretações filosóficas são plausíveis com base nos temas "
             "da obra, mas não constituem consenso acadêmico. "
         )
-    if cast(BookHistoricalContext, state.get("historical_context")).summary:
+
+    if (
+        historical_context
+        and hasattr(historical_context, "summary")
+        and historical_context.summary
+    ):
         disclaimer += (
             "O contexto histórico foi obtido da Wikipedia e pode conter "
             "imprecisões. Consulte fontes especializadas para pesquisa acadêmica."
@@ -229,8 +241,20 @@ def answerer(state: LitGraphState) -> dict:
             }
             for s in cast(list, state.get("retrieval_sources", []))
         ]
-        
         draft_answer = generated_answer
+
+    excerpt_indices = []
+    excerpt_texts = []
+    for i, c in enumerate(citations):
+        excerpt = c.get("excerpt", "")
+        if excerpt:
+            excerpt_indices.append(i)
+            excerpt_texts.append(excerpt)
+
+    translated_excerpts = llm_client.translate_excerpts_to_portuguese(excerpt_texts)
+
+    for idx, translated in zip(excerpt_indices, translated_excerpts):
+        citations[idx]["translated_excerpt"] = translated
 
     refs_block = "\n\n---\n**Referências:**\n"
     for i, c in enumerate(citations, 1):
@@ -242,17 +266,12 @@ def answerer(state: LitGraphState) -> dict:
 
         meta_str = f" [{' | '.join(meta_parts)}]" if meta_parts else ""
 
-        excerpt = c.get("excerpt", "")
-        if excerpt:
-            translated_excerpt = llm_client.translate_to_portuguese(excerpt)
-            excerpt_line = f"\n> {translated_excerpt}\n"
-        else:
-            excerpt_line = ""
+        excerpt = c.get("translated_excerpt", "")
+        excerpt_line = f"\n> {excerpt}\n" if excerpt else ""
 
         refs_block += f"\n\n**[{i}] {c.get('title', '')}**{meta_str}{excerpt_line}"
-    
-    disclaimer_block = f"\n\n{disclaimer}" if disclaimer else ""
 
+    disclaimer_block = f"\n\n{disclaimer}" if disclaimer else ""
     final_draft = draft_answer + refs_block + disclaimer_block
 
     return {

@@ -32,43 +32,11 @@ LABELED_QUESTIONS = [
         "subset": "qa",
         "gutenberg_id": 1656,
     },
-    {
-        "question": "Qual é o argumento central do Fédon sobre a imortalidade da alma?",
-        "book_title": "Phaedo",
-        "ground_truth": (
-            "No Fédon, Platão apresenta quatro argumentos principais para a imortalidade "
-            "da alma: (1) o Argumento dos Contrários — opostos se geram mutuamente, então "
-            "vida e morte se alternam; (2) a Reminiscência — conhecer é recordar, logo a "
-            "alma existia antes do nascimento; (3) a Afinidade — a alma é simples e "
-            "imutável como as Formas, portanto não pode se dissolver; (4) a Forma da Vida "
-            "— a alma participa essencialmente da Forma Vida e não pode admitir a morte. "
-            "O diálogo ocorre na cela de Sócrates no dia de sua execução."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 1658,
-    },
-    {
-        "question": "O que Sócrates entende por Eros no Banquete de Platão?",
-        "book_title": "Symposium",
-        "ground_truth": (
-            "No Banquete (Symposium), o discurso de Sócrates, atribuído à sacerdotisa "
-            "Diotima, apresenta Eros não como um deus, mas como um daemon intermediário "
-            "entre mortais e imortais. Eros é filho de Poros (recurso) e Penia (pobreza), "
-            "sendo sempre desejante e nunca plenamente saciado. A Escada de Diotima "
-            "descreve a ascensão do amor: do belo corpo individual a belos corpos em geral, "
-            "belas almas, belas atividades, belo conhecimento e, por fim, a Beleza em si "
-            "mesma (a Forma do Belo). Eros é, portanto, o impulso filosófico rumo ao Bem."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 1600,
-    },
  
     # ARISTÓTELES
     {
         "question": "O que é eudaimonia para Aristóteles na Ética a Nicômaco?",
-        "book_title": "Nicomachean Ethics",
+        "book_title": "The Ethics of Aristotle by Aristotle",
         "ground_truth": (
             "Na Ética a Nicômaco, Aristóteles define eudaimonia (felicidade ou florescimento "
             "humano) como o bem supremo e o fim último da vida humana. Ela não é um estado "
@@ -84,7 +52,7 @@ LABELED_QUESTIONS = [
     },
     {
         "question": "Como Aristóteles define o ser humano como animal político na Política?",
-        "book_title": "Politics",
+        "book_title": "Politics: A Treatise on Government by Aristotle",
         "ground_truth": (
             "Na Política, Aristóteles afirma que o homem é por natureza um animal político "
             "(zoon politikon), pois somente na polis pode realizar plenamente sua natureza "
@@ -101,7 +69,7 @@ LABELED_QUESTIONS = [
     # AGOSTINHO
     {
         "question": "Qual é o papel da memória nas Confissões de Agostinho?",
-        "book_title": "Confessions",
+        "book_title": "The Confessions of St. Augustine by Saint of Hippo Augustine",
         "ground_truth": (
             "Nas Confissões (Livro X), Agostinho explora a memória como o ventre da mente, "
             "um vasto palácio interior onde se armazenam imagens, experiências e até a "
@@ -118,7 +86,7 @@ LABELED_QUESTIONS = [
     # TOMÁS DE AQUINO
     {
         "question": "Quais são as Cinco Vias de Tomás de Aquino para provar a existência de Deus?",
-        "book_title": "Summa Theologica",
+        "book_title": "Summa Theologica, Part I (Prima Pars) by Saint Aquinas Thomas",
         "ground_truth": (
             "Na Suma Teológica (Questão 2, Artigo 3), Tomás de Aquino apresenta cinco "
             "argumentos cosmológicos: (1) Via do Movimento — tudo que se move é movido por "
@@ -133,75 +101,7 @@ LABELED_QUESTIONS = [
         "subset": "qa",
         "gutenberg_id": 17611,
     },
- 
-    # KIERKEGAARD
-    {
-        "question": "O que Kierkegaard entende por suspensão teleológica da ética em Temor e Tremor?",
-        "book_title": "Fear and Trembling",
-        "ground_truth": (
-            "Em Temor e Tremor, Kierkegaard analisa o episódio bíblico do sacrifício de "
-            "Isaque por Abraão. O cavaleiro da fé — Abraão — obedece a uma ordem divina "
-            "que contradiz a ética universal (não matar o filho). Isso configura uma "
-            "suspensão teleológica da ética: o indivíduo, por força de sua relação "
-            "absoluta com o Absoluto, pode estar acima da norma ética geral. É o paradoxo "
-            "da fé: a exigência divina individual supera a obrigação ética universal, "
-            "algo incomunicável racionalmente."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 50319,
-    },
-    {
-        "question": "Quais são os três estádios da existência em Kierkegaard?",
-        "book_title": "Either/Or",
-        "ground_truth": (
-            "Kierkegaard descreve três estádios (ou esferas) da existência: (1) Estádio "
-            "Estético — o indivíduo vive para o prazer imediato, a beleza e a sensação; "
-            "representado pelo sedutor de Ou-Ou. (2) Estádio Ético — o indivíduo assume "
-            "responsabilidades e deveres morais; representado pelo assessor Wilhelm. "
-            "(3) Estádio Religioso — transcende a ética por um salto de fé absurdo diante "
-            "de Deus; representado por Abraão em Temor e Tremor. A passagem entre estádios "
-            "não é gradual, mas um salto existencial."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 32970,
-    },
- 
-    # NIETZSCHE
-    {
-        "question": "O que Nietzsche quer dizer com 'Deus está morto' em Assim Falou Zaratustra?",
-        "book_title": "Thus Spoke Zarathustra",
-        "ground_truth": (
-            "A proclamação de que Deus está morto em Nietzsche não é um ateísmo trivial, "
-            "mas o diagnóstico cultural de que os valores absolutos (Deus, verdade objetiva, "
-            "moral cristã) perderam sua força vinculante na modernidade europeia. O homem "
-            "moderno matou Deus ao abraçar a ciência e o humanismo secular, mas não criou "
-            "novos valores para substituí-los — daí o niilismo. Zaratustra anuncia o "
-            "Übermensch como aquele que cria novos valores a partir da Vontade de Potência, "
-            "superando o niilismo reativo."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 1998,
-    },
-    {
-        "question": "O que é a moral de rebanho e a moral dos senhores em Nietzsche?",
-        "book_title": "Beyond Good and Evil",
-        "ground_truth": (
-            "Em Para Além do Bem e do Mal e na Genealogia da Moral, Nietzsche distingue "
-            "dois tipos de moral: (1) Moral dos Senhores — nascida dos nobres que chamam "
-            "de bom tudo que afirma sua força e poder; o mau é simplesmente o fraco. "
-            "(2) Moral dos Escravos (rebanho) — surgida do ressentimento dos fracos, que "
-            "invertem os valores: o bom passa a ser humildade e sofrimento; o mal é o "
-            "poderoso. Nietzsche vincula a moral judaico-cristã à moral escrava, "
-            "criticando-a como transvaloração negativa da vida."
-        ),
-        "student_level": "superior",
-        "subset": "qa",
-        "gutenberg_id": 4363,
-    },
- 
+
     # DOSTOIÉVSKI
     {
         "question": "Qual é a teoria de Raskolnikov sobre homens extraordinários em Crime e Castigo?",

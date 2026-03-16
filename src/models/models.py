@@ -123,3 +123,6 @@ class StudyChecklist(BaseModel):
     
 class TranslatedQuery(BaseModel):
     text: str
+    
+class TranslatedTexts(BaseModel):
+    texts: List[str]

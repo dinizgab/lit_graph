@@ -1,8 +1,9 @@
+import json
 from typing import List
 
 from langsmith import traceable
 from openai import OpenAI
-from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult, StudyChecklist, StudyGuideExtraction, StudyPlan, TranslatedQuery
+from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult, StudyChecklist, StudyGuideExtraction, StudyPlan, TranslatedQuery, TranslatedTexts
 
 
 class LLMClient():
@@ -517,21 +518,34 @@ class LLMClient():
         return response.output_parsed.text if response.output_parsed else query
     
     
-    @traceable(run_type="llm", name="translate_to_portuguese")
-    def translate_to_portuguese(self, text: str) -> str:
+    @traceable(run_type="llm", name="translate_excerpts_to_portuguese")
+    def translate_excerpts_to_portuguese(self, texts: List[str]) -> List[str]:
+        if not texts:
+            return []
+
+        payload = {"texts": texts}
+
         response = self.client.responses.parse(
             model=self.model,
             input=[
                 {
                     "role": "system",
                     "content": (
-                        "Translate the following text to Brazilian Portuguese. "
+                        "Translate each text to Brazilian Portuguese. "
                         "Preserve proper nouns and book titles. "
-                        "Return only the translated text, nothing else."
+                        "Do not summarize, explain, merge, split, or omit content. "
+                        "Return the translated texts in the same order."
                     ),
                 },
-                {"role": "user", "content": text},
+                {
+                    "role": "user",
+                    "content": json.dumps(payload, ensure_ascii=False),
+                },
             ],
-            text_format=TranslatedQuery,
+            text_format=TranslatedTexts,
         )
-        return response.output_parsed.text if response.output_parsed else text
+
+        if response.output_parsed and len(response.output_parsed.texts) == len(texts):
+            return response.output_parsed.texts
+
+        return texts

@@ -1,0 +1,110 @@
+{
+  "evaluated_at": "2026-03-16T15:03:10.642954Z",
+  "subset_filter": null,
+  "skip_generation": true,
+  "generated_input": "static/data/generated_data/generated_0001.json",
+  "n_questions": 10,
+  "metrics": {
+    "context_precision": 0.13833333332663886,
+    "context_recall": 0.31166666666666665,
+    "faithfulness": 0.21875,
+    "answer_relevancy": 0.07126580556850182
+  },
+  "latency": {
+    "mean_s": 112.305,
+    "min_s": 8.238,
+    "max_s": 271.441
+  },
+  "details": [
+    {
+      "question": "O que é a Alegoria da Caverna em A República de Platão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 1497,
+      "latency_s": 35.294,
+      "n_chunks": 0,
+      "answer_preview": "Error calling tool 'get_book_info': Erro ao buscar livro 'The Republic' no Gutendex: HTTPSConnectionPool(host='gutendex.com', port=443): Read timed out. (read timeout=30)"
+    },
+    {
+      "question": "Como Sócrates defende sua vida filosófica na Apologia de Platão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 1656,
+      "latency_s": 271.441,
+      "n_chunks": 6,
+      "answer_preview": "Versão corrigida e estritamente fiel às evidências fornecidas:\n\n- O texto platônico destaca a recusa de Sócrates à retórica profissional: ele se apresenta como inimigo da arte da retórica e afirma não ser um grande orador, criticando o uso de persuasão enganadora (EVIDÊNCIA 6; EVIDÊNCIA 5).\n- Quanto"
+    },
+    {
+      "question": "O que é eudaimonia para Aristóteles na Ética a Nicômaco?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 8438,
+      "latency_s": 12.544,
+      "n_chunks": 0,
+      "answer_preview": "Error calling tool 'get_book_info': Nenhuma obra encontrada para: 'Nicomachean Ethics' (buscado como: 'Nicomachean Ethics')"
+    },
+    {
+      "question": "Como Aristóteles define o ser humano como animal político na Política?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 6762,
+      "latency_s": 8.238,
+      "n_chunks": 0,
+      "answer_preview": "Error calling tool 'get_book_info': Nenhuma obra encontrada para: 'Politics' (buscado como: 'Politics')"
+    },
+    {
+      "question": "Qual é o papel da memória nas Confissões de Agostinho?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 3296,
+      "latency_s": 48.481,
+      "n_chunks": 0,
+      "answer_preview": "Desculpe, só consigo responder perguntas sobre obras literárias clássicas do domínio público. Tente perguntar sobre um título específico!"
+    },
+    {
+      "question": "Quais são as Cinco Vias de Tomás de Aquino para provar a existência de Deus?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 17611,
+      "latency_s": 17.924,
+      "n_chunks": 0,
+      "answer_preview": "Error calling tool 'get_book_info': Nenhuma obra encontrada para: 'Summa Theologica' (buscado como: 'Summa Theologiae')"
+    },
+    {
+      "question": "Qual é a teoria de Raskolnikov sobre homens extraordinários em Crime e Castigo?",
+      "subset": "qa",
+      "student_level": "medio",
+      "gutenberg_id": 2554,
+      "latency_s": 218.981,
+      "n_chunks": 6,
+      "answer_preview": "Resumo da teoria, com base nas evidências fornecidas:\n\n- Raskolnikov distingue duas “classes” ou “dois graus” de homens: os comuns e os “extraordinários” (os verdadeiros gênios) (EVIDÊNCIA 5).  \n- Sua ideia é que esses homens extraordinários, por sua missão ou valor superior, podem ter o direito de "
+    },
+    {
+      "question": "O que é o Grande Inquisidor em Os Irmãos Karamazov?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 28054,
+      "latency_s": 230.87,
+      "n_chunks": 6,
+      "answer_preview": "Não posso responder com segurança com base nas evidências fornecidas. Nos trechos e na lista de evidências que você enviou não há nenhuma menção ao “Grande Inquisidor” nem o trecho do romance que o descreve. Por isso, de acordo com suas próprias regras, não posso inventar ou inferir o que ele é.\n\nSe"
+    },
+    {
+      "question": "Qual é o papel do subterrâneo na filosofia do Homem do Subterrâneo de Dostoiévski?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 600,
+      "latency_s": 233.937,
+      "n_chunks": 6,
+      "answer_preview": "Tese curta\n- Nas evidências fornecidas, o \"subterrâneo\" funciona como espaço simbólico/existencial que encarna a hipersensibilidade do narrador, sua inércia consciente, sua contradição íntima e sua condição representativa de um tipo social.\n\nEvidências e interpretação direta (sem extrapolar)\n- Inérc"
+    },
+    {
+      "question": "Qual é a crise espiritual de Tolstói descrita em Uma Confissão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 20203,
+      "latency_s": 45.34,
+      "n_chunks": 0,
+      "answer_preview": "Desculpe, só consigo responder perguntas sobre obras literárias clássicas do domínio público. Tente perguntar sobre um título específico!"
+    }
+  ]
+}
