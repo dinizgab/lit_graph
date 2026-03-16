@@ -28,6 +28,12 @@ server = FastMCP(
 )
 
 
+@server.custom_route("/health", methods=["GET"])
+async def health(_request):
+    from starlette.responses import JSONResponse
+    return JSONResponse({"status": "ok"})
+
+
 @server.tool()
 def get_book_info(query: str) -> BookBibliographicContext:
     """
