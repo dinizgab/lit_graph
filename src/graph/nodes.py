@@ -278,7 +278,21 @@ def self_check(state: LitGraphState) -> dict:
 
 
 def output(state: LitGraphState) -> dict:
-    return {"final_answer": state.get("draft_answer", "")}
+    final_answer = state.get("final_answer")
+    draft_answer = state.get("draft_answer", "")
+
+    if final_answer and str(final_answer).strip():
+        return {"final_answer": final_answer}
+
+    if draft_answer and str(draft_answer).strip():
+        return {"final_answer": draft_answer}
+
+    return {
+        "final_answer": (
+            "Não foi possível gerar uma resposta final. "
+            "Tente reformular sua pergunta."
+        )
+    }
 
 
 def refuse(state: LitGraphState) -> dict:

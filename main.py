@@ -79,7 +79,7 @@ if prompt := st.chat_input("Pergunte sobre uma obra ou pe√ßa um guia de estudo‚Ä
                 "book_title": "",
                 "student_level": student_level if student_level in ("fundamental", "medio", "superior", "curioso") else "curioso",
                 "self_check_attempts": 0,
-                "enable_self_check": False
+                "enable_self_check": True
             })
             result = asyncio.run(run_graph(graph, initial_state))
             final = result.get("final_answer") or result.get("error", "Sem resposta.")
