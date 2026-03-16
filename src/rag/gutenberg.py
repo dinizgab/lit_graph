@@ -1,17 +1,10 @@
-"""
-Downloader do Project Gutenberg.
-- Baixa o texto de um livro pelo ID numérico
-- Salva em data/books/{gutenberg_id}_{title}.txt
-- Limpa o cabeçalho/rodapé padrão do Gutenberg antes de salvar
-"""
-
 import re
 import time
 from pathlib import Path
 
 import requests
 
-BOOKS_DIR = Path("data/books")
+BOOKS_DIR = Path("static/books")
 
 GUTENBERG_IDS = [
     1497, 1656, 1657, 1658, 1600, 1636, 1643, 1672, 1572, 1750,

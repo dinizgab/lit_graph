@@ -63,7 +63,7 @@ def index_book(file_path: str | Path, book_title: str) -> int:
     return len(chunks)
 
 
-def index_all_books(books_dir: str | Path = "data/books") -> dict[str, int]:
+def index_all_books(books_dir: str | Path = "static/books") -> dict[str, int]:
     books_path = Path(books_dir)
     results = {}
     for txt_file in books_path.glob("*.txt"):

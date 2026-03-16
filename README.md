@@ -11,4 +11,4 @@ O caso de uso principal da aplicação. O usuário informa o título da obra, o 
 O usuário faz uma pergunta direta sobre um livro, sem precisar de um guia completo. O sistema recupera os trechos mais relevantes e responde com citações, funcionando como um assistente de leitura. Exemplo: "Quais são as principais teorias sobre a culpa de Capitu?"
 
 ## Diagrama de fluxo do app
-![Diagrama de fluxo do app](imgs/llm_agents_diagram.png)
+![Diagrama de fluxo do app](static/imgs/llm_agents_diagram.png)
