@@ -32,7 +32,7 @@ def _chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> li
     return chunks
 
 
-def index_book(file_path: str | Path, book_title: str) -> int:
+def index_book(file_path: str | Path, book_title: str, gutenberg_id: int) -> int:
     path = Path(file_path)
     if not path.exists():
         raise FileNotFoundError(f"Arquivo não encontrado: {file_path}")
@@ -50,8 +50,14 @@ def index_book(file_path: str | Path, book_title: str) -> int:
         collection.delete(ids=existing["ids"])
 
     ids = [f"{book_title}::{i}" for i in range(len(chunks))]
-    metadatas = [{"book_title": book_title, "chunk_index": i} for i in range(len(chunks))]
-
+    metadatas = [
+        {
+            "book_title": book_title,
+            "chunk_index": i,
+            **({"gutenberg_id": gutenberg_id} if gutenberg_id is not None else {}),
+        }
+        for i in range(len(chunks))
+    ]
     collection.add(
         ids=ids,
         embeddings=embeddings,
@@ -68,5 +74,5 @@ def index_all_books(books_dir: str | Path = "static/books") -> dict[str, int]:
     results = {}
     for txt_file in books_path.glob("*.txt"):
         title = txt_file.stem
-        results[title] = index_book(txt_file, title)
+        results[title] = index_book(txt_file, title, None)
     return results

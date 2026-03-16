@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Any, cast
 
@@ -24,7 +25,6 @@ def supervisor(state: LitGraphState) -> dict:
 
 async def retriever(state: LitGraphState) -> dict:
     query = state.get("book_title") or state.get("user_query", "")
-    book_title = state.get("book_title")
 
     client = MultiServerMCPClient(
         {
@@ -50,16 +50,27 @@ async def retriever(state: LitGraphState) -> dict:
         hist = {}
 
     try:
-        phil = await tools["get_book_philosophical_context"].ainvoke({"query": query})
+        phil = await tools["get_book_philosophical_context"].ainvoke({
+            "title": bib.title,
+            "summaries": bib.summaries,
+            "subjects": bib.subjects,
+        })
         phil = parse_mcp_response(phil, BookPhilosophicalContext)
     except Exception:
         phil = {}
 
     try:
-        chunk_results = await tools["search_book_content"].ainvoke({
-            "query": query,
+        english_query = llm_client.translate_to_english(query)
+        raw = await tools["search_book_content"].ainvoke({
+            "query": english_query,
             "gutenberg_id": bib.gutenberg_id,
         })
+        
+        if isinstance(raw, list) and raw and isinstance(raw[0], dict) and "text" in raw[0]:
+            chunk_results = json.loads(raw[0]["text"])
+        else:
+            chunk_results = raw if isinstance(raw, list) else []
+            
     except Exception:
         chunk_results = []
 
@@ -71,10 +82,10 @@ async def retriever(state: LitGraphState) -> dict:
 
     sources = [
         {
-            "source": "gutenberg",
+            "source": "book",
             "title": bib.title,
             "id": bib.gutenberg_id,
-            "excerpt": item.get("text", "")[:300],
+            "excerpt": item.get("text", "")[:500].replace("\n", " ").strip(),
             "chunk_id": item.get("chunk_id"),
             "chunk_index": item.get("chunk_index"),
             "rank": item.get("rank"),
@@ -83,7 +94,7 @@ async def retriever(state: LitGraphState) -> dict:
             "score": item.get("score"),
             "distance": item.get("distance"),
         }
-        for item in chunk_results[:3]
+        for item in chunk_results
         if isinstance(item, dict)
     ]
 
@@ -218,37 +229,28 @@ def answerer(state: LitGraphState) -> dict:
             }
             for s in cast(list, state.get("retrieval_sources", []))
         ]
+        
         draft_answer = generated_answer
 
-    refs_block = ""
-    if citations:
-        refs_block = "\n\n---\n**Referências:**\n"
-        for i, c in enumerate(citations, 1):
-            meta_parts = []
+    refs_block = "\n\n---\n**Referências:**\n"
+    for i, c in enumerate(citations, 1):
+        meta_parts = []
+        if c.get("chunk_index") is not None:
+            meta_parts.append(f"trecho={c['chunk_index']}")
+        if c.get("score") is not None:
+            meta_parts.append(f"relevância={c['score']:.2f}")
 
-            if c.get("chunk_index") is not None:
-                meta_parts.append(f"chunk_index={c['chunk_index']}")
-            if c.get("chunk_id"):
-                meta_parts.append(f"chunk_id={c['chunk_id']}")
-            if c.get("rank") is not None:
-                meta_parts.append(f"rank={c['rank']}")
-            if c.get("book_title"):
-                meta_parts.append(f"book={c['book_title']}")
-            if c.get("location"):
-                meta_parts.append(f"location={c['location']}")
-            if c.get("score") is not None:
-                meta_parts.append(f"score={c['score']:.4f}")
+        meta_str = f" [{' | '.join(meta_parts)}]" if meta_parts else ""
 
-            meta_str = f" [{' | '.join(meta_parts)}]" if meta_parts else ""
+        excerpt = c.get("excerpt", "")
+        if excerpt:
+            translated_excerpt = llm_client.translate_to_portuguese(excerpt)
+            excerpt_line = f"\n> {translated_excerpt}\n"
+        else:
+            excerpt_line = ""
 
-            excerpt = c.get("excerpt", "")
-            excerpt_line = f"\nTrecho: {excerpt}" if excerpt else ""
-
-            refs_block += (
-                f"[{i}] {c.get('title', '')} — {c.get('source', '')} "
-                f"(id: {c.get('id', '')}){meta_str}{excerpt_line}\n"
-            )
-
+        refs_block += f"\n\n**[{i}] {c.get('title', '')}**{meta_str}{excerpt_line}"
+    
     disclaimer_block = f"\n\n{disclaimer}" if disclaimer else ""
 
     final_draft = draft_answer + refs_block + disclaimer_block
@@ -264,15 +266,6 @@ def self_check(state: LitGraphState) -> dict:
     chunks = state.get("retrieved_chunks", [])
     attempts = state.get("self_check_attempts", 0)
 
-    if attempts >= 1:
-        return {
-            "self_check_passed": False,
-            "final_answer": (
-                "Não foi possível encontrar evidências suficientes. "
-                "Tente reformular sua pergunta."
-            ),
-        }
-
     result = llm_client.self_check_answer(
         user_query=cast(str, state.get("user_query", "")),
         draft_answer=cast(str, draft),
@@ -284,23 +277,12 @@ def self_check(state: LitGraphState) -> dict:
     if result.grounded and result.suggested_action == "accept":
         return {
             "self_check_passed": True,
-            "final_answer": result.final_answer or draft,
         }
 
     if result.suggested_action == "revise":
         return {
             "self_check_passed": True,
             "final_answer": result.final_answer,
-        }
-
-    if attempts >= 1:
-        return {
-            "self_check_passed": False,
-            "final_answer": (
-                result.final_answer
-                if result.final_answer
-                else "Não foi possível validar a resposta com evidências suficientes. Tente reformular sua pergunta."
-            ),
         }
 
     return {

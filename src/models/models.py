@@ -119,3 +119,7 @@ class ChecklistItem(BaseModel):
 
 class StudyChecklist(BaseModel):
     items: List[ChecklistItem] = Field(default_factory=list)
+    
+    
+class TranslatedQuery(BaseModel):
+    text: str

@@ -44,7 +44,7 @@ def route_after_self_check(state: LitGraphState) -> str:
     if state.get("self_check_passed"):
         return "output"
 
-    if state.get("self_check_attempts", 0) >= 2:
+    if state.get("self_check_attempts", 0) >= 1:
         return "refuse"
 
     if state.get("error"):

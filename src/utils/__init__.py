@@ -10,7 +10,11 @@ GUTENDEX_URL = "https://gutendex.com/books/"
 
 def search_books_gutendex(query: str) -> list[dict]:
     try:
-        response = requests.get(GUTENDEX_URL, params={"search": query}, timeout=10)
+        response = requests.get(
+            GUTENDEX_URL,
+            params={"search": query, "languages": "en"},
+            timeout=30,
+        )
         response.raise_for_status()
     except requests.RequestException as e:
         raise ValueError(f"Erro ao buscar livro '{query}' no Gutendex: {e}") from e
@@ -48,9 +52,9 @@ def search_book_by_name(query: str) -> BookBibliographicContext:
 
     search_term = f"{original_title} {author_lastname}" if author_lastname else original_title
         
-    candidates = search_books_gutendex(search_term)
+    candidates = search_books_gutendex(original_title)
     if not candidates and search_term != original_title:
-        candidates = search_books_gutendex(original_title)
+        candidates = search_books_gutendex(search_term)
     
     best = pick_best_match(normalized["original_title"], candidates)
     

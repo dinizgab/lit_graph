@@ -1,8 +1,8 @@
-from typing import Any, Dict, List
+from typing import List
 
 from langsmith import traceable
 from openai import OpenAI
-from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult, StudyChecklist, StudyGuideExtraction, StudyPlan
+from src.models.models import BookBibliographicContext, BookHistoricalContext, BookPhilosophicalContext, NormalizedTitle, RouteDecision, SelfCheckResult, StudyChecklist, StudyGuideExtraction, StudyPlan, TranslatedQuery
 
 
 class LLMClient():
@@ -496,3 +496,42 @@ class LLMClient():
             raise ValueError("Falha ao renderizar guia final.")
 
         return response.output_text.strip()
+    
+    
+    @traceable(run_type="llm", name="translate_to_english")
+    def translate_to_english(self, query: str) -> str:
+        response = self.client.responses.parse(
+            model=self.model,
+            input=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Translate the user's query to English. "
+                        "Return only the translated text, nothing else."
+                    ),
+                },
+                {"role": "user", "content": query},
+            ],
+            text_format=TranslatedQuery,
+        )
+        return response.output_parsed.text if response.output_parsed else query
+    
+    
+    @traceable(run_type="llm", name="translate_to_portuguese")
+    def translate_to_portuguese(self, text: str) -> str:
+        response = self.client.responses.parse(
+            model=self.model,
+            input=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Translate the following text to Brazilian Portuguese. "
+                        "Preserve proper nouns and book titles. "
+                        "Return only the translated text, nothing else."
+                    ),
+                },
+                {"role": "user", "content": text},
+            ],
+            text_format=TranslatedQuery,
+        )
+        return response.output_parsed.text if response.output_parsed else text

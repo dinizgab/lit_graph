@@ -60,12 +60,11 @@ def get_book_historical_context(query: str) -> BookHistoricalContext:
 
 
 @server.tool()
-def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
+def get_book_philosophical_context(title, summaries, subjects) -> BookPhilosophicalContext:
     """
     Gera temas filosóficos plausíveis associados à obra.
     """
-    book = search_book_by_name(query)
-    return llm_client.generate_philosophical_context(book.title, book.summaries, book.subjects)
+    return llm_client.generate_philosophical_context(title, summaries, subjects)
 
 
 @server.tool()

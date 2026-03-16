@@ -32,6 +32,7 @@ def retrieve_chunks(
         query: str,
         gutenberg_id: int,
         top_k: int = 6,
+        distance_threshold: float = 0.75,
 ) -> list[dict[str, Any]]:
     embedder = _get_embedder()
     query_embedding = embedder.encode([query]).tolist()
@@ -82,7 +83,7 @@ def retrieve_chunks(
 
     filtered = [
         row for row in rows
-        if row.get("distance") is not None and row["distance"] <= 0.6
+        if row.get("distance") is not None and row["distance"] <= distance_threshold
     ]
 
     return filtered or rows
