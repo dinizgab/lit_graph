@@ -142,3 +142,79 @@ O nó `automation` executa sempre os seguintes steps internos, rastreados em `au
 A especificação do projeto sugere o uso de modelos open-source via Ollama (Llama 3.x, Qwen2.5, Mistral etc.) como preferência. O LitGraph utiliza a API da OpenAI (`gpt-5-mini`)por uma limitação de infraestrutura: o corpus do projeto inclui obras densas de filosofia clássica e literatura russa em inglês, e as chamadas encadeadas do pipeline (normalize → answer → self-check → translate) exigem um modelo com forte capacidade de reasoning e seguimento de instruções em múltiplos idiomas. Rodar um modelo local com esse nível de qualidade exigiria hardware com GPU dedicada (mínimo 16 GB VRAM para modelos 13B+), o que não estava disponível no ambiente de desenvolvimento.
 
 Os embeddings, no entanto, rodam inteiramente local via `sentence-transformers` (`all-MiniLM-L6-v2`, HuggingFace), conforme exigido pela spec — nenhuma chamada externa (com excessao das chamadas para o gutendex) é feita na etapa de indexação ou recuperação de chunks.
+
+## Como rodar
+
+### Pré-requisitos
+
+- Python 3.11+
+- [Docker](https://docs.docker.com/get-docker/) e [Docker Compose](https://docs.docker.com/compose/) (para rodar com containers)
+- Chave de API da OpenAI (`OPENAI_API_KEY`)
+
+### 1. Clone o repositório e configure o ambiente
+
+```bash
+git clone https://github.com/dinizgab/lit_graph.git
+cd lit_graph
+cp .env.example .env
+pip install -r requirements.txt   # apenas se for rodar localmente sem Docker
+# Edite .env e preencha OPENAI_API_KEY (e opcionalmente LANGSMITH_API_KEY)
+```
+
+### 2. Popule o cache de metadados
+
+O cache local evita dependência da API do Gutendex em runtime. Execute uma vez antes de rodar a aplicação:
+
+```bash
+python -m ingest.build_book_cache
+```
+
+### 3. Indexe o corpus
+
+Baixa os livros do Project Gutenberg e indexa no ChromaDB local:
+
+```bash
+python -m ingest.index_gutenberg
+```
+
+---
+
+### Opção A — Docker Compose (recomendado)
+
+Sobe o MCP server e o Streamlit em containers separados. O `app` só inicia após o `mcp` passar no healthcheck.
+
+```bash
+docker compose up --build
+```
+
+Acesse em: `http://localhost:8501`
+
+> **Atenção:** os volumes `chroma_db` e `static/` são compartilhados entre os dois serviços. Certifique-se de rodar os passos de ingest antes ou dentro do container (`docker compose run mcp python -m ingest.index_gutenberg`).
+
+---
+
+### Opção B — Local (sem Docker)
+
+**Terminal 1 — MCP server:**
+```bash
+python -m src.mcp.server
+```
+
+**Terminal 2 — Streamlit:**
+```bash
+streamlit run main.py
+```
+
+Acesse em: `http://localhost:8501`
+
+---
+
+### Avaliação
+
+```bash
+# Avaliação RAG (RAGAS)
+python -m eval.eval_qa --output result/rag_eval.json
+
+# Avaliação de automação
+python -m eval.eval_automation --output result/automation_eval.json
+```

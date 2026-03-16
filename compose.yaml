@@ -1,0 +1,36 @@
+services:
+  mcp:
+    build: .
+    command: python -m src.mcp.server
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - chroma_db:/app/chroma_db
+      - ./static:/app/static
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  app:
+    build: .
+    command: streamlit run main.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    env_file: .env
+    environment:
+      - MCP_SERVER_URL=http://mcp:8000/mcp
+    volumes:
+      - chroma_db:/app/chroma_db
+      - ./static:/app/static
+    depends_on:
+      mcp:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  chroma_db:

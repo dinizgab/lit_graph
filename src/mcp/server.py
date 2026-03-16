@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -98,8 +99,11 @@ def search_book_content(
 
 
 if __name__ == "__main__":
+    host = os.getenv("MCP_HOST", "127.0.0.1")
+    port = int(os.getenv("MCP_PORT", "8000"))
+    
     server.run(
         transport="http",
-        host="127.0.0.1",
-        port=8000,
+        host=host,
+        port=port,
     )
