@@ -25,12 +25,11 @@ def supervisor(state: LitGraphState) -> dict:
 async def retriever(state: LitGraphState) -> dict:
     query = state.get("book_title") or state.get("user_query", "")
     book_title = state.get("book_title")
-    student_level = state.get("student_level", "curioso")
 
     client = MultiServerMCPClient(
         {
             "lit_graph": {
-                "url": f"{MCP_SERVER_URL}/mcp",
+                "url": f"{MCP_SERVER_URL}",
                 "transport": "streamable_http",
             }
         },
@@ -56,37 +55,43 @@ async def retriever(state: LitGraphState) -> dict:
     except Exception:
         phil = {}
 
-    # RAG — busca trechos reais dos livros indexados
     try:
-        await tools["search_book_content"].ainvoke({
-            "query": state.get("user_query", query),
+        chunk_results = await tools["search_book_content"].ainvoke({
+            "query": query,
             "book_title": book_title,
-            "student_level": student_level,
         })
-        from src.rag.retriever import retrieve_chunks
-        chunks = retrieve_chunks(
-            query=state.get("user_query", query),
-            book_title=book_title,
-            top_k=6,
-        )
     except Exception:
-        chunks = []
+        chunk_results = []
+
+    retrieved_chunks = [
+        item.get("text", "")
+        for item in chunk_results
+        if isinstance(item, dict) and item.get("text")
+    ]
 
     sources = [
         {
             "source": "gutenberg",
             "title": bib.title,
             "id": bib.gutenberg_id,
-            "excerpt": chunk[:300],
+            "excerpt": item.get("text", "")[:300],
+            "chunk_id": item.get("chunk_id"),
+            "chunk_index": item.get("chunk_index"),
+            "rank": item.get("rank"),
+            "book_title": item.get("book_title"),
+            "location": item.get("location"),
+            "score": item.get("score"),
+            "distance": item.get("distance"),
         }
-        for chunk in chunks[:3]
+        for item in chunk_results[:3]
+        if isinstance(item, dict)
     ]
 
     return {
         "bibliographic_context": bib,
         "historical_context": hist,
         "philosophical_context": phil,
-        "retrieved_chunks": chunks,
+        "retrieved_chunks": retrieved_chunks,
         "retrieval_sources": sources,
     }
 
@@ -141,6 +146,13 @@ def automation(state: LitGraphState) -> dict:
             "title": s.get("title", ""),
             "id": s.get("id", ""),
             "excerpt": s.get("excerpt", ""),
+            "chunk_id": s.get("chunk_id"),
+            "chunk_index": s.get("chunk_index"),
+            "rank": s.get("rank"),
+            "book_title": s.get("book_title"),
+            "location": s.get("location"),
+            "score": s.get("score"),
+            "distance": s.get("distance"),
         }
         for s in retrieval_sources
     ]
@@ -196,6 +208,13 @@ def answerer(state: LitGraphState) -> dict:
                 "title": s.get("title", ""),
                 "id": s.get("id", ""),
                 "excerpt": s.get("excerpt", ""),
+                "chunk_id": s.get("chunk_id"),
+                "chunk_index": s.get("chunk_index"),
+                "rank": s.get("rank"),
+                "book_title": s.get("book_title"),
+                "location": s.get("location"),
+                "score": s.get("score"),
+                "distance": s.get("distance"),
             }
             for s in cast(list, state.get("retrieval_sources", []))
         ]
@@ -205,11 +224,29 @@ def answerer(state: LitGraphState) -> dict:
     if citations:
         refs_block = "\n\n---\n**Referências:**\n"
         for i, c in enumerate(citations, 1):
+            meta_parts = []
+
+            if c.get("chunk_index") is not None:
+                meta_parts.append(f"chunk_index={c['chunk_index']}")
+            if c.get("chunk_id"):
+                meta_parts.append(f"chunk_id={c['chunk_id']}")
+            if c.get("rank") is not None:
+                meta_parts.append(f"rank={c['rank']}")
+            if c.get("book_title"):
+                meta_parts.append(f"book={c['book_title']}")
+            if c.get("location"):
+                meta_parts.append(f"location={c['location']}")
+            if c.get("score") is not None:
+                meta_parts.append(f"score={c['score']:.4f}")
+
+            meta_str = f" [{' | '.join(meta_parts)}]" if meta_parts else ""
+
             excerpt = c.get("excerpt", "")
             excerpt_line = f"\nTrecho: {excerpt}" if excerpt else ""
+
             refs_block += (
                 f"[{i}] {c.get('title', '')} — {c.get('source', '')} "
-                f"(id: {c.get('id', '')}){excerpt_line}\n"
+                f"(id: {c.get('id', '')}){meta_str}{excerpt_line}\n"
             )
 
     disclaimer_block = f"\n\n{disclaimer}" if disclaimer else ""

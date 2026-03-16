@@ -72,7 +72,8 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
 def search_book_content(
         query: str,
         book_title: str | None = None,
-) -> list[str]:
+        top_k: int = 6,
+) -> list[dict]:
     """
     Busca trechos relevantes nos livros indexados usando RAG.
 
@@ -89,7 +90,7 @@ def search_book_content(
         query='descreva a batalha de Borodino', book_title='2600_war_and_peace'
         query='o que significa o leopardo na obra?'
     """
-    return retrieve_chunks(query=query, book_title=book_title, top_k=6)
+    return retrieve_chunks(query=query, book_title=book_title, top_k=top_k)
 
 
 if __name__ == "__main__":
