@@ -47,25 +47,6 @@ O LitGraph utiliza um servidor MCP próprio implementado com [FastMCP](https://g
 
 ---
 
-## Avaliação de Automação
-
-A automação do LitGraph corresponde à rota `guide`, ativada quando o supervisor detecta a intenção de gerar um guia de estudo. O nó `automation` executa um workflow sequencial de 4 steps para produzir um documento estruturado com citações do texto original.
-
-### Workflow de automação
-
-```
-retriever → automation → safety → answerer → self_check → output
-```
-
-O nó `automation` executa sempre os seguintes steps internos, rastreados em `automation_trace`:
-
-| Step | Função | Descrição |
-|------|--------|-----------|
-| 1 | `build_study_plan` | Gera plano de leitura em 4–6 etapas adaptado ao nível do aluno |
-| 2 | `extract_study_guide_elements` | Extrai personagens, temas, passagens-chave e perguntas de revisão |
-| 3 | `build_revision_checklist` | Transforma o plano em checklist de 5–8 itens de revisão |
-| 4 | `render_structured_study_guide` | Renderiza o guia final em português com 7 seções fixas |
-
 ## Avaliação RAG (RAGAS)
 
 A avaliação seguiu o protocolo exigido na especificação do projeto: 10 perguntas rotuladas sobre obras do corpus (filosofia clássica e literatura russa), executadas contra o pipeline completo do LitGraph, com métricas calculadas via [RAGAS](https://docs.ragas.io).
