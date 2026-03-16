@@ -70,50 +70,47 @@ O nó `automation` executa sempre os seguintes steps internos, rastreados em `au
 
 A avaliação seguiu o protocolo exigido na especificação do projeto: 10 perguntas rotuladas sobre obras do corpus (filosofia clássica e literatura russa), executadas contra o pipeline completo do LitGraph, com métricas calculadas via [RAGAS](https://docs.ragas.io).
 
+A partir da terceira rodada (`rag_eval_0003`), o pipeline passou a usar o cache local de metadados (`static/data/book_cache.json`) em vez de buscar o Gutendex ao vivo, eliminando as falhas de indexação que afetavam metade das perguntas nas rodadas anteriores.
+
 ### Métricas — médias (subset `qa`, 10 perguntas)
 
-| Métrica             | Valor  | Interpretação                              |
-|---------------------|--------|--------------------------------------------|
-| `faithfulness`      | 0.6250 | Resposta está ancorada nos chunks?         |
-| `answer_relevancy`  | 0.1518 | Resposta endereça diretamente a pergunta?  |
-| `context_precision` | 0.0556 | Chunks recuperados são de fato relevantes? |
-| `context_recall`    | 0.6944 | O contexto recuperado cobre o gabarito?    |
+| Métrica             | v1 (sem cache) | v2 (com cache) | Δ       | Interpretação                              |
+|---------------------|:--------------:|:--------------:|:-------:|--------------------------------------------|
+| `faithfulness`      | 0.6250         | **0.9417**     | +0.32   | Resposta está ancorada nos chunks?         |
+| `answer_relevancy`  | 0.1518         | **0.1658**     | +0.01   | Resposta endereça diretamente a pergunta?  |
+| `context_precision` | 0.0556         | **0.1622**     | +0.11   | Chunks recuperados são de fato relevantes? |
+| `context_recall`    | 0.6944         | **0.7604**     | +0.07   | O contexto recuperado cobre o gabarito?    |
 
-> **N por métrica:** `faithfulness` = 3, `answer_relevancy` = 8, `context_precision` = 3, `context_recall` = 3.  
-> O N reduzido em algumas métricas reflete perguntas para as quais o pipeline não conseguiu recuperar contexto (0 chunks), tornando o cálculo inviável pelo RAGAS.
+> **N por métrica (v2):** `faithfulness` = 8, `answer_relevancy` = 9, `context_precision` = 8, `context_recall` = 8.  
 
-### Latência por pergunta
+### Latência por pergunta (v2 — com cache)
 
 | # | Pergunta | Latência (s) | Chunks |
 |---|----------|:------------:|:------:|
-| 1 | O que é a Alegoria da Caverna em A República de Platão? | 36,33 | 0 |
-| 2 | Como Sócrates defende sua vida filosófica na Apologia de Platão? | 187,15 | 6 |
-| 3 | O que é eudaimonia para Aristóteles na Ética a Nicômaco? | 12,28 | 0 |
-| 4 | Como Aristóteles define o ser humano como animal político na Política? | 8,59 | 0 |
-| 5 | Qual é o papel da memória nas Confissões de Agostinho? | 48,02 | 0 |
-| 6 | Quais são as Cinco Vias de Tomás de Aquino para provar a existência de Deus? | 145,49 | 6 |
-| 7 | Qual é a teoria de Raskolnikov sobre homens extraordinários em Crime e Castigo? | 182,64 | 6 |
-| 8 | O que é o Grande Inquisidor em Os Irmãos Karamazov? | 123,71 | 6 |
-| 9 | Qual é o papel do subterrâneo na filosofia do Homem do Subterrâneo de Dostoiévski? | 191,36 | 6 |
-| 10 | Qual é a crise espiritual de Tolstói descrita em Uma Confissão? | 43,74 | 0 |
-| — | **Média** | **97,93** | — |
+| 1 | O que é a Alegoria da Caverna em A República de Platão? | 126,74 | 6 |
+| 2 | Como Sócrates defende sua vida filosófica na Apologia de Platão? | 175,03 | 6 |
+| 3 | O que é eudaimonia para Aristóteles na Ética a Nicômaco? | 184,63 | 6 |
+| 4 | Como Aristóteles define o ser humano como animal político na Política? | 143,99 | 6 |
+| 5 | Qual é o papel da memória nas Confissões de Agostinho? | 174,69 | 6 |
+| 6 | Quais são as Cinco Vias de Tomás de Aquino para provar a existência de Deus? | 121,53 | 6 |
+| 7 | Qual é a teoria de Raskolnikov sobre homens extraordinários em Crime e Castigo? | 163,34 | 6 |
+| 8 | O que é o Grande Inquisidor em Os Irmãos Karamazov? | 83,87 | 6 |
+| 9 | Qual é o papel do subterrâneo na filosofia do Homem do Subterrâneo de Dostoiévski? | 147,79 | 6 |
+| 10 | Qual é a crise espiritual de Tolstói descrita em Uma Confissão? | 42,48 | 0 |
+| — | **Média** | **136,41** | — |
+
+> A pergunta 10 (Tolstói, *Uma Confissão*) ainda retorna 0 chunks — a obra está no corpus mas o safety-agent a classifica fora do escopo literário de ficção. As demais 9 perguntas foram respondidas com contexto completo.
 
 ### Análise dos resultados
 
-**O que funcionou bem:**
-- O `context_recall` de 0.69 indica que, quando o sistema consegue indexar a obra, os chunks recuperados cobrem bem o conteúdo esperado pela resposta de referência.
-- O `faithfulness` de 0.63 mostra que o answerer respeita as evidências recuperadas — o mecanismo de self-check está cumprindo seu papel de ancoragem.
-- Nas perguntas com 6 chunks (Dostoiévski, Aquino, Sócrates), o pipeline produziu respostas estruturadas e com citações do texto original.
-
-**Limitações identificadas:**
-- **`answer_relevancy` baixo (0.15):** as respostas são longas, estruturadas em tópicos e com disclaimers de evidência — o RAGAS interpreta isso como baixa aderência à pergunta. A postura conservadora do self-check (recusar quando evidências são insuficientes) é desejável como comportamento, mas penaliza a métrica.
-- **`context_precision` muito baixo (0.06):** os chunks recuperados incluem ruído (sumários, índices, trechos periféricos). Um reranker ou filtragem semântica mais fina reduziria esse problema.
-- **Falhas de indexação (5 de 10 perguntas com 0 chunks):** metade das perguntas resultou em erro de busca no Gutendex — timeout de rede, títulos não encontrados pela busca literal (ex.: `"Nicomachean Ethics"` vs. `"The Ethics of Aristotle"`) ou obras classificadas fora do escopo pelo safety-agent.
+**O que esta nos limitando:**
+- **`answer_relevancy` persistentemente baixo (0.17):** o gargalo agora é o estilo das respostas — o answerer produz textos longos, estruturados em tópicos com disclaimers de evidência explícitos ("com base apenas nas evidências fornecidas…"). O RAGAS interpreta essa estrutura como baixa aderência à pergunta direta. Esse comportamento é uma escolha de design do self-check (anti-alucinação), não um bug.
+- **Latência alta (~136 s em média):** o cache eliminou timeouts de rede, mas a latência base esta alta porque todas as perguntas chegam ao estágio de geração (antes 5 falhavam rápido). O gargalo é a inferência do LLM nas múltiplas chamadas por pergunta (normalize, answer, self-check, translate).
+- **Pergunta 10 (Tolstói) ainda sem chunks:** a obra *A Confession* (ID 20203) está indexada, mas o supervisor a classifica como fora do escopo ao receber a query sem `book_title` explícito.
 
 ### Próximos passos para melhoria
 
-- Cache local das obras já indexadas para eliminar re-downloads e reduzir latência.
-- Normalização de título com fuzzy matching ou lookup por Gutenberg ID direto para reduzir falhas de busca.
-- Reranker (ex.: `bge-reranker`) para melhorar `context_precision`.
-- Ampliar o dataset para ≥ 20 perguntas com cobertura de obras que o sistema indexa com sucesso.
-- Ajustar o prompt do answerer para respostas mais diretas, reduzindo boilerplate de disclaimers.
+- Ajustar o prompt do answerer para respostas mais diretas, reduzindo boilerplate de disclaimers que penalizam o `answer_relevancy`.
+- Investigar a classificação da pergunta 10 — o supervisor pode estar roteando para `refuse` por "Confissão" parecer contexto religioso/espiritual e não literário.
+- Reranker (ex.: `bge-reranker`) para melhorar `context_precision` além de 0.16.
+- Ampliar o dataset para ≥ 20 perguntas para N mais robusto em todas as métricas.

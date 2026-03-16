@@ -12,18 +12,49 @@ class LLMClient():
         self.client = OpenAI()
         
     @traceable(run_type="llm", name="normalize_title")
-    def normalize_title(self, query: str) -> dict:
+    def normalize_title(self, query: str, cache_titles: list[str] | None = None) -> dict:
+        """
+        Normaliza um título de obra para inglês.
+ 
+        Se `cache_titles` for fornecido (lista de títulos do cache local),
+        o LLM tenta identificar qual deles corresponde ao query — eliminando
+        variações de grafia e evitando que o modelo invente um título que
+        não existe no índice.
+ 
+        Parâmetros:
+            query         — título como digitado pelo usuário (qualquer idioma)
+            cache_titles  — lista de títulos conhecidos (chaves do book_cache).
+                            Obtenha com: list(load_cache()["by_id"][id]["title"]
+                            for id in cache["by_id"])
+                            ou use book_cache.get_cached_titles().
+        """
+        if cache_titles:
+            titles_block = "\n".join(f"- {t}" for t in cache_titles[:200])
+            system_content = (
+                "Você é um especialista em literatura clássica. "
+                "Dado um título de obra literária em qualquer idioma, retorne:\n"
+                "- 'original_title': o título em inglês\n"
+                "- 'author_lastname': o sobrenome do autor em inglês\n"
+                "- 'matched_cache_title': se o título corresponder a algum item da lista abaixo, "
+                "retorne o título EXATAMENTE como ele aparece na lista. "
+                "Se não encontrar correspondência, retorne null.\n\n"
+                f"Títulos disponíveis no índice:\n{titles_block}"
+            )
+        else:
+            system_content = (
+                "Você é um especialista em literatura clássica. "
+                "Dado um título de obra literária em qualquer idioma, "
+                "retorne os campos 'original_title' (título em inglês) "
+                "e 'author_lastname' (sobrenome do autor em inglês). "
+                "Retorne 'matched_cache_title' como null."
+            )
+ 
         response = self.client.responses.parse(
             model="gpt-5.4",
             input=[
                 {
                     "role": "system",
-                    "content": (
-                        "Você é um especialista em literatura clássica. "
-                        "Dado um título de obra literária em qualquer idioma, "
-                        "retorne os campos 'original_title' (título em inglês)"
-                        "e 'author_lastname' (sobrenome do autor em inglês)."
-                    ),
+                    "content": system_content,
                 },
                 {
                     "role": "user",
@@ -32,12 +63,12 @@ class LLMClient():
             ],
             text_format=NormalizedTitle,
         )
-        
+ 
         parsed = response.output_parsed
-
+ 
         if parsed is None:
             raise ValueError("Falha ao estruturar resposta do modelo.")
-        
+ 
         return parsed.model_dump()
     
     def generate_philosophical_context(self, title: str, summaries: List[str], subjects: list[str]) -> BookPhilosophicalContext:

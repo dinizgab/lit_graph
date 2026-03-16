@@ -43,6 +43,7 @@ class BookHistoricalContext(BaseModel):
 class NormalizedTitle(BaseModel):
     original_title: str
     author_lastname: str | None = None
+    matched_cache_title: str | None = None
     
     
 class UnsupportedClaim(BaseModel):

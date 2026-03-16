@@ -1,0 +1,1217 @@
+{
+  "generated_at": "2026-03-16T20:53:14.964553Z",
+  "total": 52,
+  "failed_ids": [],
+  "by_id": {
+    "1497": {
+      "id": 1497,
+      "title": "The Republic",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"The Republic\" by Plato is a Socratic dialogue written around 375 BC. Through conversations between Socrates and various Athenians, the work explores the meaning of justice and whether the just person is happier than the unjust. Socrates examines existing forms of government and proposes an ideal city-state ruled by philosopher-kings. The dialogue ranges across profound questions: the nature of the soul, the role of poetry, love, aging, and the purpose of political power itself. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Justice -- Early works to 1800",
+        "Political science -- Early works to 1800",
+        "Utopias -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1656": {
+      "id": 1656,
+      "title": "Apology",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Apology\" by Plato is a Socratic dialogue written after 399 BC. It presents Socrates's legal defense at his trial, where he faced charges of corrupting Athens's youth and introducing new gods. Standing before a jury of perhaps 500 Athenian men, Socrates refuses to use sophisticated rhetoric, speaking instead in his characteristic questioning style. Rather than compromise his integrity to avoid death, he challenges his accusers and maintains his philosophical principles, insisting his only wisdom comes from knowing that he knows nothing. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Philosophy, Ancient",
+        "Socrates, 470 BC-399 BC"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1657": {
+      "id": 1657,
+      "title": "Crito",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Crito\" by Plato is a dialogue written around 399 BC. It depicts a conversation between Socrates and his friend Crito as Socrates awaits execution in prison. Crito urges Socrates to escape, offering money and refuge, but Socrates refuses. Through their debate about justice and injustice, Socrates personifies the Laws of Athens to argue that wrongdoing cannot be answered with wrongdoing. The dialogue presents an early statement of social contract theory. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Dialogues, Greek -- Translations into English",
+        "Justice -- Early works to 1800",
+        "Philosophy, Ancient"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1658": {
+      "id": 1658,
+      "title": "Phaedo",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Phaedo\" by Plato is a dialogue written in ancient Greece. In the final hours before his execution, Socrates debates the immortality of the soul and the nature of the afterlife with his friends. Through philosophical arguments with Pythagorean philosophers Simmias and Cebes, he explores whether the soul survives death and what awaits it afterward. The dialogue culminates in a mythological vision of the underworld and an account of Socrates' death. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Immortality (Philosophy) -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1600": {
+      "id": 1600,
+      "title": "Symposium",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Symposium\" by Plato is a Socratic dialogue written between 385-370 BC. At a banquet in ancient Athens, notable figures including Socrates, Alcibiades, and Aristophanes engage in a contest of speeches praising Eros, the god of love. Each man offers his perspective on love's nature and power—from inspiring battlefield courage to transcending earthly desire. Through conflicting ideas and shifting viewpoints, the dialogue explores love's deepest meanings while showcasing both philosophical depth and literary artistry. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Love -- Early works to 1800",
+        "Philosophy, Ancient",
+        "Socrates, 470 BC-399 BC"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1636": {
+      "id": 1636,
+      "title": "Phaedrus",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Phaedrus\" by Plato is a dialogue written around 370 BC. Socrates encounters the young Phaedrus outside Athens, who has just heard a speech about love. What begins as a countryside stroll becomes an intricate philosophical exploration of love, rhetoric, and the human soul. Through three competing speeches, Socrates and Phaedrus debate whether it's better to favor a lover or a non-lover, ultimately revealing deeper questions about divine madness, the soul's nature, and the proper practice of persuasive speech. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Love -- Early works to 1800",
+        "Lysias",
+        "Rhetoric -- Early works to 1800",
+        "Rhetoric, Ancient",
+        "Socrates, 470 BC-399 BC",
+        "Soul -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1643": {
+      "id": 1643,
+      "title": "Meno",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Meno\" by Plato is a Socratic dialogue written around 385 BC. The work begins with a simple question: Can virtue be taught? As Socrates and his young interlocutor Meno pursue this inquiry, they encounter profound puzzles about the nature of knowledge itself. How can we search for what we don't know? Why is knowledge more valuable than true belief? Through dialectical exchange and a famous geometric demonstration with a slave, Plato explores recollection, learning, and the immortality of the soul. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Ethics -- Early works to 1800",
+        "Socrates, 470 BC-399 BC",
+        "Virtue -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1672": {
+      "id": 1672,
+      "title": "Gorgias",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Gorgias\" by Plato is a Socratic dialogue written around 380 BC. Through probing questions at a dinner gathering, Socrates challenges self-proclaimed teachers of rhetoric about the true nature of their craft. Is rhetoric an art or merely flattery? Can persuasive speech be moral without philosophy? The dialogue explores whether the power of words serves truth and justice, or simply pleasure and political advantage, as Socrates confronts the celebrated rhetoricians of Athens. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Ethics -- Early works to 1800",
+        "Political science -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1572": {
+      "id": 1572,
+      "title": "Timaeus",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Timaeus\" by Plato is a philosophical dialogue written around 360 BC. Through lengthy monologues, the work explores the nature of the physical universe and humanity's place within it. A divine craftsman—the demiurge—brings order from chaos, shaping the cosmos according to eternal, perfect forms. The dialogue examines why the world exists as a living, intelligent whole and how the elements were organized from primordial disorder. It also references the legendary tale of Atlantis, setting the stage for deeper cosmological speculation. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Classical literature",
+        "Cosmology -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1750": {
+      "id": 1750,
+      "title": "Laws",
+      "authors": [
+        {
+          "name": "Plato",
+          "birth_year": -428,
+          "death_year": -348
+        }
+      ],
+      "summaries": [
+        "\"Laws\" by Plato is a dialogue written in ancient Greece as Plato's final work. Three elderly men journey to Zeus's cave, debating who deserves credit for establishing laws. When one traveler reveals he must create laws for a new colony, they spend their journey designing an entire legal system for the imagined city of Magnesia. Through twelve books, they explore divine law, education, criminal justice, and the nature of soul, creating a vision distinct from Plato's earlier Republic. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Political science -- Early works to 1800",
+        "State, The -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "8438": {
+      "id": 8438,
+      "title": "The Ethics of Aristotle",
+      "authors": [
+        {
+          "name": "Aristotle",
+          "birth_year": -384,
+          "death_year": -322
+        }
+      ],
+      "summaries": [
+        "\"The Ethics of Aristotle\" by Aristotle is a foundational philosophical treatise written in the 4th century BC. This work serves as a comprehensive exploration of moral philosophy, addressing the nature of good character, virtue, and ultimately happiness, which Aristotle identifies as the chief aim of human action. The text is a part of Aristotle's broader discussions on human conduct, linked with his other work, \"Politics,\" to form a holistic view of moral and civic life.  The opening of this significant text introduces the central themes of ethics as they pertain to individual behavior in a societal context. Aristotle posits that every action is directed towards some good, with happiness defined as the ultimate end that people seek. Through a thorough analysis of various modes of life, including the pursuit of pleasure, honor, and contemplation, Aristotle thoughtfully critiques popular notions of happiness. He emphasizes the importance of virtue, which is achieved through habituation and reasoned action, ultimately weaving together ethics with the practical aspects of living well and functioning within the community. The excerpt illustrates Aristotle's method of philosophical inquiry, laying a groundwork for his extensive examination of moral virtues and their application in life. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Ethics"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "6762": {
+      "id": 6762,
+      "title": "Politics: A Treatise on Government",
+      "authors": [
+        {
+          "name": "Aristotle",
+          "birth_year": -384,
+          "death_year": -322
+        }
+      ],
+      "summaries": [
+        "\"Politics: A Treatise on Government\" by Aristotle is a work of political philosophy written in the 4th century BC. Aristotle examines how people should best live together in communities, particularly the polis or city-state. Drawing on research of 158 constitutions, he uses an evidence-based approach to explore the nature of political communities, household relationships, citizenship, and controversial questions about slavery and justice. The work bridges ethics and politics in Aristotle's philosophy of human affairs. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Political science -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "6763": {
+      "id": 6763,
+      "title": "Aristotle on the art of poetry",
+      "authors": [
+        {
+          "name": "Aristotle",
+          "birth_year": -384,
+          "death_year": -322
+        }
+      ],
+      "summaries": [
+        "\"Aristotle on the art of poetry\" by Aristotle is a philosophical treatise written around 335 BCE. This earliest surviving work of Greek dramatic theory examines poetry's fundamental nature, focusing on tragedy, comedy, and epic verse. Aristotle explores how these genres imitate life through differences in rhythm, character, and narrative presentation. The text analyzes tragedy's essential elements—including plot construction, character development, and the experience of catharsis through fear and pity. It distinguishes poetic truth from historical fact, arguing poetry reveals universal possibilities rather than particular events. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Aesthetics -- Early works to 1800",
+        "Music -- Philosophy and aesthetics",
+        "Poetry -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1974": {
+      "id": 1974,
+      "title": "The Poetics of Aristotle",
+      "authors": [
+        {
+          "name": "Aristotle",
+          "birth_year": -384,
+          "death_year": -322
+        }
+      ],
+      "summaries": [
+        "\"The Poetics of Aristotle\" by Aristotle is a philosophical treatise written around 335 BCE. This earliest surviving work of Greek dramatic theory examines poetry as an art of imitation, focusing primarily on tragedy, epic, and comedy. Aristotle analyzes how these genres differ in rhythm, character, and narrative presentation, establishing foundational concepts like catharsis and dramatic structure. Though only the section on tragedy and epic survives, this text became a cornerstone of Western literary criticism, influencing centuries of debate about storytelling and artistic creation. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Aesthetics -- Early works to 1800",
+        "Poetry -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1173": {
+      "id": 1173,
+      "title": "The Economist",
+      "authors": [
+        {
+          "name": "Xenophon",
+          "birth_year": -431,
+          "death_year": -355
+        }
+      ],
+      "summaries": [
+        "\"The Economist\" by Xenophon is a Socratic dialogue written around 362 BC. It explores household management and agriculture through conversations between Socrates and two Athenians. The work examines what constitutes true wealth, the art of managing property and slaves, and the education of wives. Through the gentleman-farmer Ischomachus, Xenophon presents ideas about gender roles, rural life, and leadership that have sparked debate among scholars—some viewing the text as patriarchal, others seeing proto-feminist elements, and many detecting layers of irony throughout. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Administration of estates -- Greece -- Early works to 1800",
+        "Classical literature",
+        "Dialogues, Greek -- Translations into English",
+        "Greece -- Economic conditions -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2412": {
+      "id": 2412,
+      "title": "The Categories",
+      "authors": [
+        {
+          "name": "Aristotle",
+          "birth_year": -384,
+          "death_year": -322
+        }
+      ],
+      "summaries": [
+        "\"The Categories\" by Aristotle is a philosophical text from ancient Greece that enumerates all possible kinds of things that can be the subject or predicate of a proposition. This foundational work divides everything in human experience into ten fundamental categories, distinguishing between what can be said \"of\" versus \"in\" a subject. Aristotle explores substances, quantities, qualities, and relations, providing a framework for understanding reality that influenced medieval philosophy and sparked centuries of debate about language, logic, and existence. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Categories (Philosophy)",
+        "Logic -- Early works to 1800",
+        "Philosophy, Ancient"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2413": {
+      "id": 2413,
+      "title": "Madame Bovary",
+      "authors": [
+        {
+          "name": "Flaubert, Gustave",
+          "birth_year": 1821,
+          "death_year": 1880
+        }
+      ],
+      "summaries": [
+        "\"Madame Bovary\" by Gustave Flaubert is a novel published in 1857. Emma Bovary, a beautiful young woman raised on romantic novels, marries a country doctor but finds provincial life suffocating. Craving luxury, passion, and high society, she seeks escape through increasingly reckless means. This groundbreaking work of literary realism caused scandal upon publication, with prosecutors attacking it as obscene. The resulting trial made it notorious before it became a bestseller and one of literature's most influential works. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Adultery -- Fiction",
+        "Domestic fiction",
+        "France -- Fiction",
+        "Married women -- Fiction",
+        "Middle class -- Fiction",
+        "Physicians' spouses -- Fiction",
+        "Suicide victims -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2414": {
+      "id": 2414,
+      "title": "Cliges: A Romance",
+      "authors": [
+        {
+          "name": "Chrétien, de Troyes, active 12th century",
+          "birth_year": null,
+          "death_year": null
+        }
+      ],
+      "summaries": [
+        "\"Cliges: A Romance\" by Chrétien de Troyes is a poem written around 1176. This Arthurian romance unfolds in two parts: first following Alexander, a Greek prince who becomes a knight at King Arthur's court and marries the queen's niece, and then their son Cligès, who falls dangerously in love with his uncle's wife, Fenice. Their forbidden passion leads to elaborate deceptions, magical potions, and a daring escape that challenges the boundaries of courtly love and chivalric honor. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Arthurian romances",
+        "Romances -- Translations into English"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2415": {
+      "id": 2415,
+      "title": "The Mutiny of the Elsinore",
+      "authors": [
+        {
+          "name": "London, Jack",
+          "birth_year": 1876,
+          "death_year": 1916
+        }
+      ],
+      "summaries": [
+        "\"The Mutiny of the Elsinore\" by Jack London is a novel written in the early 20th century, specifically in the context of maritime adventures. The story follows the protagonist, Mr. Pathurst, who embarks on a voyage aboard the sailing ship Elsinore. His anticipation for the journey quickly turns to irritation and doubt as he navigates an array of troubling circumstances—from the peculiarities of the ship's captain, Captain West, to the odd crew members he encounters, all while dealing with an unexpected canine companion.  The beginning of the book sets the stage for a tumultuous sea voyage. Mr. Pathurst, facing delays and the biting cold, describes his growing displeasure with the captain's ambiguous arrangements and the questionable crew, highlighted by their unremarkable and even unkempt appearances. Meanwhile, Pathurst meets Captain West and his daughter, Margaret, who is unexpectedly accompanying them, adding another layer of complexity to his experience. The opening chapters illustrate not only the physical environment of the ship and its crew's disarray but also Pathurst's inner turmoil as he grapples with his reasons for going to sea and the unsettling notion of an impending challenge posed by both the crew's competence and his own expectations. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Mutiny -- Fiction",
+        "Sea stories"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "3296": {
+      "id": 3296,
+      "title": "The Confessions of St. Augustine",
+      "authors": [
+        {
+          "name": "Augustine, of Hippo, Saint",
+          "birth_year": 354,
+          "death_year": 430
+        }
+      ],
+      "summaries": [
+        "\"The Confessions of St. Augustine\" by Bishop of Hippo Saint Augustine is an autobiographical work written between AD 397 and 400. In thirteen books composed as prayers to God, Augustine recounts his turbulent journey from a sinful youth to Christian conversion. He reflects on his immoral past, his time following Manichaeism, and the influential figures who guided him toward faith. Considered the first Western autobiography, this intimate spiritual memoir explores themes of sin, redemption, and humanity's restless search for divine truth. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Augustine, of Hippo, Saint, 354-430",
+        "Bishops -- Algeria -- Hippo (Extinct city) -- Biography",
+        "Catholic Church -- Bishops -- Biography",
+        "Christian saints -- Algeria -- Hippo (Extinct city) -- Biography"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "45304": {
+      "id": 45304,
+      "title": "The City of God, Volume I",
+      "authors": [
+        {
+          "name": "Augustine, of Hippo, Saint",
+          "birth_year": 354,
+          "death_year": 430
+        }
+      ],
+      "summaries": [
+        "\"The City of God, Volume I\" by Bishop of Hippo Saint Augustine is a work of Christian philosophy written in Latin in the early 5th century AD. Composed in response to Rome's sack by the Visigoths in 410, Augustine defends Christianity against accusations that it caused Rome's decline. He presents human history as a conflict between the Earthly City—those pursuing worldly pleasures—and the City of God—those dedicated to eternal truths. Through theological argument and historical analysis, Augustine refutes pagan religion and philosophy while expounding on suffering, evil, free will, and original sin. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Apologetics -- Early works to 1800",
+        "Kingdom of God -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1302": {
+      "id": 1302,
+      "title": "The Enemies of Books",
+      "authors": [
+        {
+          "name": "Blades, William",
+          "birth_year": 1824,
+          "death_year": 1890
+        }
+      ],
+      "summaries": [
+        "\"The Enemies of Books\" by William Blades is a historical account written in the late 19th century. The book addresses the various threats that books face over time, including physical destruction by fire, water, neglect, and even human ignorance and bigotry. The author meticulously documents notable instances of library destruction and the carelessness that has harmed invaluable texts throughout history.  The beginning of \"The Enemies of Books\" outlines the devastating impact of fire on libraries and manuscripts, citing examples from various historical periods, such as the burning of the Alexandria library and incidents during the Great Fire of London. Blades argues that such losses to humanity's literary treasures are incalculable. He illustrates how these calamities have not only affected written works but also shaped our understanding of cultural heritage. As he details notable events of destruction by fire, the text sets the foundation for a larger discussion on the preservation and vulnerability of books, highlighting the importance of safeguarding literary artifacts for posterity. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Book-worms",
+        "Books -- Conservation and restoration"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "48280": {
+      "id": 48280,
+      "title": "Life Movements in Plants, Volume I",
+      "authors": [
+        {
+          "name": "Bose, Jagadis Chandra",
+          "birth_year": 1858,
+          "death_year": 1937
+        }
+      ],
+      "summaries": [
+        "\"Life Movements in Plants, Volume I\" by Jagadis Chandra Bose is a scientific publication written in the early 20th century.\" This work delves into the intricate and often complex responses of plants to various stimuli, such as light, temperature, and mechanical forces, and it particularly focuses on how these factors influence plant movements. Bose’s exploration covers a range of plant phenomena, encompassing both the universally observed movements across different species and specific case studies, such as the remarkable diurnal motions of the \"Praying Palm.\"  \"The opening of the text sets the stage for an in-depth examination of plant movements, beginning with an introduction to the fundamental question of how plants respond to stimuli.\" It highlights the variability in movements that can occur under identical conditions, indicating the dynamic interactions between different factors that influence plant behavior. Bose introduces his research methodologies and recording apparatus, emphasizing the need for precise measurement in understanding the physiological reactions involved. He uses the \"Praying Palm\" as a focal example and describes the intentions behind his experiments to showcase the relationship between environmental variations and the observable diurnal patterns in plant movement. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Growth (Plants)",
+        "Plants -- Irritability and movements"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "17611": {
+      "id": 17611,
+      "title": "Summa Theologica, Part I (Prima Pars): From the Complete American Edition",
+      "authors": [
+        {
+          "name": "Thomas, Aquinas, Saint",
+          "birth_year": null,
+          "death_year": 1274
+        }
+      ],
+      "summaries": [
+        "\"Summa Theologica, Part I (Prima Pars)\" by Saint Thomas Aquinas is a theological work written in the 13th century. This monumental compendium presents the main theological teachings of the Catholic Church, designed as an instructional guide for beginning theology students. Through a structured question-and-answer format, Aquinas explores fundamental topics including the existence and nature of God, Creation, angels, and humanity. Drawing from Christian, Islamic, Jewish, and ancient philosophical sources, this unfinished masterpiece systematically builds arguments for Christian theology, establishing itself as one of history's most influential philosophical and theological texts. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Catholic Church -- Doctrines -- Early works to 1800",
+        "God -- Attributes -- Early works to 1800",
+        "God -- Omnipresence -- Early works to 1800",
+        "Theology, Doctrinal -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "41781": {
+      "id": 41781,
+      "title": "The Country House (with Designs)",
+      "authors": [
+        {
+          "name": "Châteauneuf, Alexis de",
+          "birth_year": 1799,
+          "death_year": 1853
+        },
+        {
+          "name": "Eastlake, Charles Lock, Sir",
+          "birth_year": 1793,
+          "death_year": 1865
+        }
+      ],
+      "summaries": [
+        "\"The Country House (with Designs)\" edited by Lady Mary Fox is a collection of essays and letters on architectural principles and designs, written in the mid-19th century. The work aims to explore various domestic architectural styles and provides considerations for building a new house. The key figures mentioned include Monsieur De Chateauneuf, who discusses styles suitable for domestic architecture, and Mr. Eastlake, who contributes insights on interior decoration.  The opening of the book introduces the motivations behind its creation, highlighting letters exchanged between a builder contemplating designing a new house and an architect offering detailed advice on style, site selection, and construction materials. The initial correspondence outlines the builder's specific desires for the house's layout and aesthetic while emphasizing the importance of the surrounding landscape and the need for a home that is both beautiful and functional. The letters promise a rich discussion on architecture, with references to various styles that underscore the contributors' artistic and practical concerns. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Architecture -- England -- History -- 19th century",
+        "Architecture, Domestic -- England",
+        "Country homes -- England"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "42227": {
+      "id": 42227,
+      "title": "A Witch Shall Be Born",
+      "authors": [
+        {
+          "name": "Howard, Robert E. (Robert Ervin)",
+          "birth_year": 1906,
+          "death_year": 1936
+        }
+      ],
+      "summaries": [
+        "\"A Witch Shall Be Born\" by Robert E. Howard is a sword and sorcery novella written in 1934. When an evil twin witch replaces the rightful queen of Khauran, Conan the Cimmerian refuses to serve the impostor and faces brutal crucifixion for his defiance. The story follows Conan's survival and quest for vengeance as the witch's reign plunges the city into terror and ruin. Featuring one of the most memorable scenes in the Conan series, this tale explores themes of duality, paranoia, and the eternal conflict between barbarism and civilization. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Conan (Fictitious character) -- Fiction",
+        "Fantasy fiction, American"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "37939": {
+      "id": 37939,
+      "title": "Liquid Drops and Globules, Their Formation and Movements: Three lectures delivered to popular audiences",
+      "authors": [
+        {
+          "name": "Darling, Charles R. (Charles Robert)",
+          "birth_year": 1870,
+          "death_year": null
+        }
+      ],
+      "summaries": [
+        "\"Liquid Drops and Globules, Their Formation and Movements\" by Charles R. Darling is a scientific publication written in the early 20th century. This work comprises a series of lectures aimed at popular audiences, where the author explores the fascinating behavior and properties of liquid drops and globules. The book delves into various phenomena surrounding liquids, focusing on their formation, movements, and the underlying principles of surface tension, making it an engaging read for both scientists and curious laypersons.  The opening of the text sets the stage for an exploration of the common yet remarkable phenomena associated with liquid drops. Darling introduces the concept of a drop as a familiar object in nature that holds deeper scientific intrigue. He discusses the general properties of liquids, such as mobility and the ability to form an elastic boundary surface. The text also touches on the unique characteristics of liquid surfaces and how they interact with external forces, inviting readers to engage with a series of experiments and observations that reveal the complexity underlying what seems superficially simple: a drop of liquid. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Drops",
+        "Liquids",
+        "Surface tension"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "38032": {
+      "id": 38032,
+      "title": "Game Birds and Game Fishes of the Pacific Coast",
+      "authors": [
+        {
+          "name": "Payne, Harry Thom",
+          "birth_year": 1844,
+          "death_year": null
+        }
+      ],
+      "summaries": [
+        "\"Game Birds and Game Fishes of the Pacific Coast\" by H. T. Payne is a scientific publication written in the early 20th century. This comprehensive work focuses on the various species of game birds and fishes found along the Pacific Coast of North America, providing practical information tailored for sportsmen rather than ornithologists or ichthyologists. The text emphasizes accessible descriptions and illustrations that aim to inform and educate hunters, particularly younger generations who are just beginning their journey into these outdoor sports.  At the start of the book, the author discusses the significance of the newly implemented laws regarding hunting licenses, which have increased interest in game sports among the population. He explains how the book is designed from the perspective of a practical sportsman, using plain language to describe various species while including scientific classification for further study. The opening outlines his intent to share the knowledge accumulated from decades of experience in fields and streams, highlighting the connection between hunting these birds and the joy it brings to those who partake in these outdoor activities. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Game and game-birds -- Pacific Coast"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "18269": {
+      "id": 18269,
+      "title": "Pascal's Pensées",
+      "authors": [
+        {
+          "name": "Pascal, Blaise",
+          "birth_year": 1623,
+          "death_year": 1662
+        }
+      ],
+      "summaries": [
+        "**Pascal's Pensées** by Blaise Pascal is a collection of fragments written in the 17th century. Left incomplete at Pascal's death in 1662, these notes were intended as a defense of Christianity. The work introduces \"Pascal's wager\" and challenges both cosmological proofs of God and atheist critiques of faith. Pascal argues that God is hidden and found only through sincere seeking. Published posthumously in 1670, the fragments' intended order remains debated, inspiring numerous editions and influencing thinkers from Heidegger to Sartre. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Apologetics -- Early works to 1800",
+        "Catholic Church -- Apologetic works -- Early works to 1800",
+        "Catholic Church -- Doctrines -- Early works to 1800"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "4039": {
+      "id": 4039,
+      "title": "Volpone; Or, The Fox",
+      "authors": [
+        {
+          "name": "Jonson, Ben",
+          "birth_year": null,
+          "death_year": 1637
+        }
+      ],
+      "summaries": [
+        "\"Volpone; Or, The Fox\" by Ben Jonson is a comedy play first produced in 1605–1606. In this merciless satire of greed and lust, a wealthy Venetian pretends to be dying to trick three greedy men hoping to inherit his fortune. With his cunning servant Mosca, Volpone weaves elaborate deceptions that escalate dangerously when desire for a beautiful woman enters the scheme. The plots grow increasingly complex until master and servant become entangled in their own web of lies, leading to consequences neither anticipated. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "English drama (Comedy)",
+        "English drama -- 17th century",
+        "Extortion -- Drama",
+        "Inheritance and succession -- Drama",
+        "Satire, English",
+        "Venice (Italy) -- Drama"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "50319": {
+      "id": 50319,
+      "title": "Harper's Round Table, December 17, 1895",
+      "authors": [
+        {
+          "name": "Various",
+          "birth_year": null,
+          "death_year": null
+        }
+      ],
+      "summaries": [
+        "\"Harper's Round Table, December 17, 1895\" by Various is a literary magazine written during the late 19th century. This publication features a collection of stories and articles aimed primarily at a young audience, presenting diverse narratives including adventure tales and festive themes. The contents reflect the societal interests and aesthetic of the period, providing insight into childhood experiences and moral lessons.  The opening of the magazine introduces a Christmas-themed adventure titled \"Christmas on Majuba Station\" by Richard Barry, featuring Midshipman Bobby Seymour aboard the steam-frigate \"Sumter\". As the crew prepares for Christmas in the heat of the African coast, Bobby experiences homesickness, reminiscing about snowy holidays and family traditions. His poignant emotions are contrasted with the ship's dreary atmosphere, especially as the captain is ill, setting the stage for an unexpected challenge when Bobby and his crew venture to investigate a mysterious object in the sea. This narrative promises elements of adventure, discovery, and the warmth of holiday spirit amid the backdrop of military service. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Children's periodicals"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "32970": {
+      "id": 32970,
+      "title": "Harper's Round Table, May 21, 1895",
+      "authors": [
+        {
+          "name": "Various",
+          "birth_year": null,
+          "death_year": null
+        }
+      ],
+      "summaries": [
+        "\"Harper's Round Table, May 21, 1895\" by Various is a periodical publication featuring a collection of articles and stories intended for young readers, published during the late 19th century. The content reflects a diverse range of themes, including historical accounts, adventures, and moral tales suitable for children and adolescents. This issue highlights significant American figures and events, making it a valuable snapshot of the cultural and social values of the time.  The opening portion of this publication begins with an evocative piece by Theodore Roosevelt titled \"The Death of Stonewall Jackson,\" which honors the famed Confederate general's valor during the Civil War while reflecting on the complexities of war and heroism. Roosevelt presents a detailed account of Jackson's character, battles, and ultimate fate, emphasizing the duality of admiration for both Northern and Southern soldiers. Following this poignant tribute, the writing shifts into a narrative of intrigue through fictional stories like \"The Ship Without a Light,\" which introduces young characters who uncover smuggling activities, hinting at themes of bravery and moral responsibility. Overall, the beginning captures a blend of historical reverence and adventurous storytelling that would engage and inspire young readers of the era. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Children's periodicals"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "38241": {
+      "id": 38241,
+      "title": "Uncle's Dream; and The Permanent Husband",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"Uncle's Dream\" and \"The Permanent Husband\" by Fyodor Dostoevsky is a collection of short stories written in the late 19th century. The stories explore themes of social dynamics, personal relationships, and the intricacies of human psychology, typical of Dostoevsky's works. The opening story, \"Uncle's Dream,\" introduces readers to the manipulative and influential figure of Maria Alexandrovna Moskaleva, a woman of high social standing in the town of Mordasoff, who expertly navigates gossip and scandal in her community.  At the start of \"Uncle's Dream,\" we meet Maria Alexandrovna, a character whose strong presence demands attention and respect, even if few actually love her. As the tale unfolds, it is revealed that her husband has been sent to the countryside due to his incompetence, allowing her to wield full control over social matters in the town. The story sets the stage for intriguing developments with the unexpected visit of Prince K---, which promises to upend the social order in Mordasoff, igniting Maria Alexandrovna’s ambitions and complicating her relationships with others, including her unmarried daughter, Zina. The opening portrays a blend of humor and social commentary, drawing readers into the complexities of provincial life and the characters’ interactions. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Princes -- Russia -- Fiction",
+        "Russia -- Social life and customs -- 1533-1917 -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "34283": {
+      "id": 34283,
+      "title": "History of Modern Philosophy",
+      "authors": [
+        {
+          "name": "Benn, Alfred William",
+          "birth_year": 1843,
+          "death_year": 1915
+        }
+      ],
+      "summaries": [
+        "\"History of Modern Philosophy\" by Alfred William Benn is a philosophical account written in the early 20th century. The work delves into the evolution of philosophical thought from the Renaissance to the Enlightenment, with a focus on key figures and their contributions to modern philosophy. The likely topic of the book encompasses an examination of major philosophical movements and the thinkers that shaped them, exploring their ideas and the historical context surrounding these developments.  The opening of the book introduces the concept of the \"Philosophical Renaissance,\" detailing the lack of significant philosophical advancement during the thousand years following the closure of the schools of Athens. Benn discusses the gradual changes in society that set the stage for a return to philosophical inquiry, influenced largely by the revival of classical thought and the innovations of the Renaissance. The text presents an overview of how the philosophical landscape transitioned from medieval dogmatism to the questioning and inquiry that characterized the modern era, indicating the roles played by Christianity, the rise of humanism, and the impact of new scientific ideas, such as Copernican astronomy, in initiating this transformation. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Philosophy, Modern -- History"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1998": {
+      "id": 1998,
+      "title": "Thus Spake Zarathustra: A Book for All and None",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"Thus Spake Zarathustra: A Book for All and None\" by Friedrich Wilhelm Nietzsche is a work of philosophical fiction published between 1883 and 1885. Through the voice of the ancient prophet Zarathustra, Nietzsche delivers discourses on subjects ranging from the mundane to the metaphysical. The work introduces core Nietzschean concepts including the Übermensch, the death of God, the will to power, and eternal recurrence. Written in analogical and figurative language, it emerged from decades of accumulated insight during solitary mountain walks. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Philosophy, German",
+        "Superman (Philosophical concept)"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "4363": {
+      "id": 4363,
+      "title": "Beyond Good and Evil",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"Beyond Good and Evil\" by Friedrich Wilhelm Nietzsche is a philosophical work published in 1886. Nietzsche launches a fierce attack on traditional philosophy, accusing past thinkers of disguising moral prejudices as objective truth. He challenges fundamental concepts like good versus evil, knowledge, and free will, proposing instead his theory of \"will to power.\" The book calls for new philosophers who will move beyond conventional morality to embrace a more dangerous, perspectival understanding of existence and create new values for the future. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Ethics",
+        "Philosophy, German"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "52319": {
+      "id": 52319,
+      "title": "The Genealogy of Morals: The Complete Works, Volume Thirteen, edited by Dr. Oscar Levy.",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"The Genealogy of Morals\" by Friedrich Wilhelm Nietzsche is a philosophical work published in 1887. Consisting of three interrelated treatises, it traces the evolution of moral concepts to challenge what Nietzsche views as moral prejudices, particularly those of Christianity and Judaism. Through historical analysis, Nietzsche examines how opposing value systems—\"good and evil\" versus \"good and bad\"—emerged from different social classes. He explores the aristocratic morality of the powerful and the \"slave morality\" born from resentment, revealing how values became inverted throughout history. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Ethics"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "51356": {
+      "id": 51356,
+      "title": "The Birth of Tragedy; or, Hellenism and Pessimism",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"The Birth of Tragedy; or, Hellenism and Pessimism\" by Friedrich Wilhelm Nietzsche is a work of dramatic theory published in 1872. Nietzsche introduces a bold dichotomy between the Dionysian and Apollonian forces—disorder versus order—that he believed shaped ancient Greek tragedy. He argues that Greek tragedy achieved art's highest form by uniting these opposing elements, allowing audiences to experience the full human condition. Nietzsche traces tragedy's decline through rationalism and suggests Richard Wagner's operas might revive this lost balance. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Aesthetics",
+        "Greek drama (Tragedy) -- History and criticism -- Theory, etc.",
+        "Music -- Philosophy and aesthetics",
+        "Mythology, Greek, in literature",
+        "Tragedy",
+        "Tragic, The"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "19322": {
+      "id": 19322,
+      "title": "The Antichrist",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"The Antichrist\" by Friedrich Wilhelm Nietzsche is a philosophical work written in 1888 and published in 1895. Nietzsche launches a fierce critique of Christianity and modern values, arguing they spring from weakness rather than strength. He attacks Christian concepts of pity, morality, and God as life-denying forces that celebrate decline over vitality. Contrasting Christianity with Buddhism and examining the origins of religious power, Nietzsche advocates for a transvaluation of values based on the will to power rather than compassion. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Christianity -- Controversial literature"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "37841": {
+      "id": 37841,
+      "title": "Human, All-Too-Human: A Book for Free Spirits, Part 2",
+      "authors": [
+        {
+          "name": "Nietzsche, Friedrich Wilhelm",
+          "birth_year": 1844,
+          "death_year": 1900
+        }
+      ],
+      "summaries": [
+        "\"Human, All-Too-Human: A Book for Free Spirits, Part 2\" by Friedrich Nietzsche consists of two collections of aphorisms published in 1879 and 1880. These brief, incisive paragraphs explore human nature, morality, religion, and metaphysics through Nietzsche's emerging perspectivism. Marking his break from German Romanticism and Wagner, these works adopt a positivist approach influenced by French aphorists like La Rochefoucauld. The aphorisms challenge conventional Christian morality and contain seeds of concepts crucial to Nietzsche's later philosophy, combining cynical insights with historical consciousness and philosophical argument. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Human beings"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2600": {
+      "id": 2600,
+      "title": "War and Peace",
+      "authors": [
+        {
+          "name": "Tolstoy, Leo, graf",
+          "birth_year": 1828,
+          "death_year": 1910
+        }
+      ],
+      "summaries": [
+        "\"War and Peace\" by graf Leo Tolstoy is a literary work published in 1869. Set during the Napoleonic Wars, it chronicles the French invasion of Russia through five interlocking narratives following different Russian aristocratic families. The work blends fictional storytelling with philosophical discussions about history, war, and power. Tolstoy himself hesitated to classify it, saying it is \"not a novel, even less is it a poem, and still less a historical chronicle.\" It remains one of the most praised classics of world literature. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Aristocracy (Social class) -- Russia -- Fiction",
+        "Historical fiction",
+        "Napoleonic Wars, 1800-1815 -- Campaigns -- Russia -- Fiction",
+        "Russia -- History -- Alexander I, 1801-1825 -- Fiction",
+        "War stories"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1399": {
+      "id": 1399,
+      "title": "Anna Karenina",
+      "authors": [
+        {
+          "name": "Tolstoy, Leo, graf",
+          "birth_year": 1828,
+          "death_year": 1910
+        }
+      ],
+      "summaries": [
+        "\"Anna Karenina\" by graf Leo Tolstoy is a novel first published in book form in 1878. The story follows Anna, a married socialite in Imperial Russian society, whose extramarital affair with cavalry officer Count Vronsky scandalizes Saint Petersburg and forces them to flee to Italy. A parallel narrative traces landowner Konstantin Levin's pursuit of marriage and his struggles with faith and estate management. The novel explores themes of betrayal, family, marriage, desire, and the clash between rural and urban life against Russia's rapid social transformation. (This is an automatically generated summary.)",
+        "Anna Karenina (Russian: «Анна Каренина», IPA: [ˈanːə kɐˈrʲenʲɪnə]) is a novel by the Russian author Leo Tolstoy, first published in book form in 1878. Many writers consider it to be one of the greatest works of literature ever written, and Tolstoy himself called it his first true novel. It was initially released in serial installments from 1875 to 1877, all but the last part appearing in the periodical The Russian Messenger."
+      ],
+      "subjects": [
+        "Adultery -- Fiction",
+        "Didactic fiction",
+        "Love stories",
+        "Married women -- Fiction",
+        "Russia -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "1938": {
+      "id": 1938,
+      "title": "Resurrection",
+      "authors": [
+        {
+          "name": "Tolstoy, Leo, graf",
+          "birth_year": 1828,
+          "death_year": 1910
+        }
+      ],
+      "summaries": [
+        "\"Resurrection\" by graf Leo Tolstoy is a novel published in 1899. A nobleman serving on a jury recognizes the prostitute on trial as a young woman he seduced and abandoned years earlier. Confronted by his past crime, he embarks on a journey of moral awakening, following her into Siberian exile while witnessing the brutal injustices hidden beneath Russia's aristocratic surface. Tolstoy's final major work challenges institutionalized hypocrisy and explores one man's desperate quest for redemption. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Aristocracy (Social class) -- Russia -- Fiction",
+        "Atonement -- Fiction",
+        "Change -- Religious aspects -- Fiction",
+        "Prostitutes -- Russia -- Fiction",
+        "Russia -- Social conditions -- 1801-1917 -- Fiction",
+        "Social justice -- Russia -- Fiction",
+        "Trials (Murder) -- Russia -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "4602": {
+      "id": 4602,
+      "title": "\"The Kingdom of God Is Within You\": Christianity Not as a Mystic Religion but as a New Theory of Life",
+      "authors": [
+        {
+          "name": "Tolstoy, Leo, graf",
+          "birth_year": 1828,
+          "death_year": 1910
+        }
+      ],
+      "summaries": [
+        "\"The Kingdom of God Is Within You\" by graf Leo Tolstoy is a philosophical treatise first published in 1894. Banned in Russia, this Christian anarchist work presents Tolstoy's radical interpretation of Christianity centered on universal love and absolute nonviolence. Drawing on the Sermon on the Mount, Tolstoy argues for dismantling all violent institutions, including governments and churches that support war. His vision profoundly influenced figures like Mohandas Gandhi, who credited the book with shaping his philosophy of passive resistance that would eventually help overthrow British colonial rule in India. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Christianity -- Controversial literature",
+        "Christianity -- Essence, genius, nature",
+        "Evil, Non-resistance to",
+        "Government, Resistance to -- Religious aspects -- Christianity",
+        "Nonviolence -- Religious aspects -- Christianity"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "20203": {
+      "id": 20203,
+      "title": "Autobiography of Benjamin Franklin",
+      "authors": [
+        {
+          "name": "Franklin, Benjamin",
+          "birth_year": 1706,
+          "death_year": 1790
+        }
+      ],
+      "summaries": [
+        "\"Autobiography of Benjamin Franklin\" by Benjamin Franklin is an unfinished memoir written between 1771 and 1790. Franklin recounts his journey from a young apprentice fleeing Boston to becoming a successful printer and civic leader in Philadelphia. The work famously details his \"Project of arriving at moral Perfection\" through thirteen virtues, revealing his struggles and philosophies. Written across four parts over nearly two decades, this influential autobiography ends when Franklin was 52, leaving three decades of his remarkable life unrecorded. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Franklin, Benjamin, 1706-1790",
+        "Statesmen -- United States -- Biography"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "64908": {
+      "id": 64908,
+      "title": "What Is Art?",
+      "authors": [
+        {
+          "name": "Tolstoy, Leo, graf",
+          "birth_year": 1828,
+          "death_year": 1910
+        }
+      ],
+      "summaries": [
+        "\"What Is Art?\" by graf Leo Tolstoy is a philosophical work completed in 1897. Tolstoy questions the very nature of art, rejecting beauty-based definitions to propose that art is anything communicating emotion—from jokes to church services. Yet his Christian moralism leads him to dismiss celebrated masters like Beethoven, Wagner, and Shakespeare, along with most of his own writings. He condemns the obscurity and artificiality of contemporary art, insisting that true art must be accessible to all and serve humanity's moral evolution by evoking brotherhood and love. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Arts -- Philosophy",
+        "Arts and morals"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2554": {
+      "id": 2554,
+      "title": "Crime and Punishment",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"Crime and Punishment\" by Fyodor Dostoevsky is a novel published in 1866. It follows Rodion Raskolnikov, an impoverished former law student in Saint Petersburg who plans to murder an unscrupulous pawnbroker. He convinces himself that certain crimes are justifiable if committed by \"extraordinary\" men pursuing higher goals. Once the deed is done, however, he is consumed by confusion, paranoia, and guilt as his theoretical justifications crumble and he faces the internal and external consequences of his actions. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Crime -- Psychological aspects -- Fiction",
+        "Detective and mystery stories",
+        "Murder -- Fiction",
+        "Psychological fiction",
+        "Saint Petersburg (Russia) -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "28054": {
+      "id": 28054,
+      "title": "The Brothers Karamazov",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"The Brothers Karamazov\" by Fyodor Dostoevsky is a novel published between 1879 and 1880. Set in 19th-century Russia, this passionate philosophical work explores profound questions of God, free will, and morality. The story revolves around the volatile Karamazov family: a disreputable father and his three sons—sensual Dmitri, intellectual Ivan, and idealistic Alyosha. As tensions escalate over inheritance and romantic entanglements, the novel delves into faith, doubt, and reason, with patricide at the heart of its dramatic plot. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Brothers -- Fiction",
+        "Didactic fiction",
+        "Fathers and sons -- Fiction",
+        "Russia -- Social life and customs -- 1533-1917 -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "2638": {
+      "id": 2638,
+      "title": "The Idiot",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"The Idiot\" by Fyodor Dostoevsky is a novel published serially in 1868–1869. It follows Prince Myshkin, a young nobleman whose Christian goodness and innocence lead worldly society to mistake him for simple-minded. Dostoevsky sets his \"positively good and beautiful man\" against the passions, desires, and egoism of contemporary Russian life, testing whether true Christian love can survive in a corrupt world. The result is a deeply personal work exploring profound moral and spiritual questions. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Historical fiction",
+        "Russia -- Social conditions -- 1801-1917 -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "8117": {
+      "id": 8117,
+      "title": "The possessed : $b or, The devils",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"The Possessed: or, The Devils\" by Fyodor Dostoyevsky is a novel first published in 1871–72. A fictional Russian town descends into chaos as conspirators attempt revolution, led by the cunning Pyotr Verkhovensky. Dominating the story is the mysterious aristocrat Nikolai Stavrogin, who exerts extraordinary influence over nearly everyone around him. This political satire and psychological drama explores the catastrophic consequences of nihilism taking hold in 1860s Russia, where destructive ideas possess individuals and threaten to consume an entire society. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Nihilism -- Fiction",
+        "Political fiction",
+        "Russia -- Social life and customs -- 1533-1917 -- Fiction",
+        "Terrorists -- Russia -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "600": {
+      "id": 600,
+      "title": "Notes from the Underground",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"Notes from the Underground\" by Fyodor Dostoevsky is a novella published in 1864. This confession-style narrative follows a bitter, isolated former civil servant in St. Petersburg known as the Underground Man. Through philosophical monologues and personal anecdotes, he attacks determinism and utopian ideals, arguing that humans need suffering and irrationality to maintain freedom. He obsesses over past humiliations and social encounters, embracing spite and inaction while despising the rational self-interest that he believes has trapped him in unhappiness. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Political fiction",
+        "Russia -- History -- 1801-1917 -- Fiction",
+        "Russia -- Officials and employees -- Fiction"
+      ],
+      "languages": [
+        "en"
+      ]
+    },
+    "36034": {
+      "id": 36034,
+      "title": "White nights, and other stories",
+      "authors": [
+        {
+          "name": "Dostoyevsky, Fyodor",
+          "birth_year": 1821,
+          "death_year": 1881
+        }
+      ],
+      "summaries": [
+        "\"White Nights and Other Stories\" by Fyodor Dostoyevsky is a collection of short stories written in the mid-19th century. The title story, \"White Nights,\" revolves around an unnamed narrator who leads a solitary life in St. Petersburg and unexpectedly finds connection with a mysterious young woman named Nastenka. The collection explores themes of loneliness, longing, and the complexities of human relationships through the lens of Dostoyevsky's profound psychological insight.  At the start of \"White Nights,\" the narrator describes his feelings of desolation as he wanders through St. Petersburg, reflecting on his profound loneliness as the city empties out for the summer. He encounters Nastenka, who is weeping at the canal, and in their interaction, a delicate bond begins to form. The narrator, filled with shyness, provides her a sense of safety in the face of an unwanted advance from a drunken gentleman. Their conversation reveals much about their longing for connection and inner turmoil, setting the stage for a passionate, albeit complex, relationship marked by unspoken emotions and dreams intertwined with reality. As the night unfolds, the narrator's infatuation with Nastenka deepens, but her heart seems already tethered to someone else, creating a poignant tension that is typical of Dostoyevsky's compelling storytelling. (This is an automatically generated summary.)"
+      ],
+      "subjects": [
+        "Dostoyevsky, Fyodor, 1821-1881 -- Translations into English",
+        "Russian fiction -- Translations into English"
+      ],
+      "languages": [
+        "en"
+      ]
+    }
+  },
+  "by_title": {
+    "the republic": 1497,
+    "apology": 1656,
+    "crito": 1657,
+    "phaedo": 1658,
+    "symposium": 1600,
+    "phaedrus": 1636,
+    "meno": 1643,
+    "gorgias": 1672,
+    "timaeus": 1572,
+    "laws": 1750,
+    "the ethics of aristotle": 8438,
+    "politics: a treatise on government": 6762,
+    "aristotle on the art of poetry": 6763,
+    "the poetics of aristotle": 1974,
+    "the economist": 1173,
+    "the categories": 2412,
+    "madame bovary": 2413,
+    "cliges: a romance": 2414,
+    "the mutiny of the elsinore": 2415,
+    "the confessions of st. augustine": 3296,
+    "the city of god, volume i": 45304,
+    "the enemies of books": 1302,
+    "life movements in plants, volume i": 48280,
+    "summa theologica, part i (prima pars): from the complete american edition": 17611,
+    "the country house (with designs)": 41781,
+    "a witch shall be born": 42227,
+    "liquid drops and globules, their formation and movements: three lectures delivered to popular audiences": 37939,
+    "game birds and game fishes of the pacific coast": 38032,
+    "pascal's pensées": 18269,
+    "volpone; or, the fox": 4039,
+    "volpone": 4039,
+    "or, the fox": 4039,
+    "harper's round table, december 17, 1895": 50319,
+    "harper's round table, may 21, 1895": 32970,
+    "uncle's dream; and the permanent husband": 38241,
+    "uncle's dream": 38241,
+    "and the permanent husband": 38241,
+    "history of modern philosophy": 34283,
+    "thus spake zarathustra: a book for all and none": 1998,
+    "beyond good and evil": 4363,
+    "the genealogy of morals: the complete works, volume thirteen, edited by dr. oscar levy.": 52319,
+    "the birth of tragedy; or, hellenism and pessimism": 51356,
+    "the birth of tragedy": 51356,
+    "or, hellenism and pessimism": 51356,
+    "the antichrist": 19322,
+    "human, all-too-human: a book for free spirits, part 2": 37841,
+    "war and peace": 2600,
+    "anna karenina": 1399,
+    "resurrection": 1938,
+    "\"the kingdom of god is within you\": christianity not as a mystic religion but as a new theory of life": 4602,
+    "autobiography of benjamin franklin": 20203,
+    "what is art?": 64908,
+    "crime and punishment": 2554,
+    "the brothers karamazov": 28054,
+    "the idiot": 2638,
+    "the possessed : $b or, the devils": 8117,
+    "notes from the underground": 600,
+    "white nights, and other stories": 36034
+  }
+}

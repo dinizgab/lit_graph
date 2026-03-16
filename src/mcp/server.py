@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 load_dotenv()
 
+from src.utils.book_cache import get_cached_titles
+
 import wikipedia
 from wikipedia import DisambiguationError, PageError
 from fastmcp import FastMCP
@@ -42,8 +44,11 @@ def get_book_historical_context(query: str) -> BookHistoricalContext:
     Dados como período histórico, ambiente cultural e contextos sociais da obra.
     Exemplos: 'memórias do subsolo', 'guerra e paz', 'a divina comédia'.
     """
-    search_term = llm_client.normalize_title(query)["original_title"]
-
+    search_term = llm_client.normalize_title(
+        query, cache_titles=get_cached_titles()
+    )
+    search_term = search_term["original_title"]
+    
     wikipedia.set_lang("en")
     try:
         wikipedia_page = wikipedia.page(search_term, auto_suggest=False)

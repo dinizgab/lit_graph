@@ -4,9 +4,11 @@ from rapidfuzz import fuzz
 
 from src.models.models import BookBibliographicContext
 from src.utils.llm_client import LLMClient
+from src.utils.book_cache import search_book_by_name_cached
 
 llm_client = LLMClient()
 GUTENDEX_URL = "https://gutendex.com/books/"
+
 
 def search_books_gutendex(query: str) -> list[dict]:
     try:
@@ -18,19 +20,18 @@ def search_books_gutendex(query: str) -> list[dict]:
         response.raise_for_status()
     except requests.RequestException as e:
         raise ValueError(f"Erro ao buscar livro '{query}' no Gutendex: {e}") from e
-    
+
     if response.status_code != 200:
         raise ValueError(f"Erro ao buscar livro {query} no Gutendex")
 
     data = response.json()
-
     return data.get("results", [])
 
 
 def pick_best_match(query: str, candidates: list[dict]) -> dict | None:
     if not candidates:
         return None
-    
+
     scored = []
     normalized_query = query.lower().strip()
 
@@ -38,33 +39,47 @@ def pick_best_match(query: str, candidates: list[dict]) -> dict | None:
         title = book.get("title", "").lower().strip()
         score = fuzz.token_sort_ratio(normalized_query, title)
         scored.append((score, book))
-    
+
     scored.sort(key=lambda x: x[0], reverse=True)
     best_score, best_book = scored[0]
 
     return best_book if best_score >= 60 else None
 
 
-def search_book_by_name(query: str) -> BookBibliographicContext:
+def _live_search(query: str) -> BookBibliographicContext:
+    """Fallback: busca ao vivo no Gutendex (comportamento original)."""
     normalized = llm_client.normalize_title(query)
     original_title = normalized["original_title"]
     author_lastname = normalized.get("author_lastname")
-
     search_term = f"{original_title} {author_lastname}" if author_lastname else original_title
-        
+
     candidates = search_books_gutendex(original_title)
     if not candidates and search_term != original_title:
         candidates = search_books_gutendex(search_term)
-    
+
     best = pick_best_match(normalized["original_title"], candidates)
-    
+
     if not best:
         raise ValueError(
             f"Nenhuma obra encontrada para: '{query}' "
             f"(buscado como: '{normalized['original_title']}')"
         )
-    
+
     return BookBibliographicContext.model_validate(best)
+
+
+def search_book_by_name(query: str) -> BookBibliographicContext:
+    """
+    Busca os metadados de um livro pelo nome.
+
+    Consulta o cache local (static/data/book_cache.json) primeiro.
+    Se não encontrar, faz fallback para o Gutendex ao vivo.
+    """
+    return search_book_by_name_cached(
+        query=query,
+        llm_normalize_fn=llm_client.normalize_title,
+        fallback_fn=_live_search,
+    )
 
 
 def parse_mcp_response(raw, model_class):
@@ -75,8 +90,8 @@ def parse_mcp_response(raw, model_class):
         text = raw
     else:
         return raw
-    
+
     if text is None:
         raise ValueError("Cannot parse None as JSON")
-    
+
     return model_class(**json.loads(text))

@@ -1,0 +1,126 @@
+{
+  "evaluated_at": "2026-03-16T21:38:29.285376Z",
+  "subset_filter": "qa",
+  "skip_generation": false,
+  "generated_input": null,
+  "n_questions": 10,
+  "metrics": {
+    "faithfulness": 0.941667,
+    "answer_relevancy": 0.165836,
+    "context_precision": 0.162153,
+    "context_recall": 0.760417
+  },
+  "metric_counts": {
+    "faithfulness": 8,
+    "answer_relevancy": 9,
+    "context_precision": 8,
+    "context_recall": 8
+  },
+  "latency": {
+    "mean_s": 136.409,
+    "min_s": 42.483,
+    "max_s": 184.634
+  },
+  "details": [
+    {
+      "question": "O que é a Alegoria da Caverna em A República de Platão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 1497,
+      "latency_s": 126.741,
+      "n_chunks": 6,
+      "answer_preview": "Com base apenas nas evidências apresentadas: não há, entre os excertos fornecidos, um texto ou descrição da Alegoria da Caverna. O que pode ser afirmado de forma razoável e estrita a partir dos trechos é o seguinte:\n\n- Não há trecho que contenha a Alegoria da Caverna ou uma descrição direta dela nos",
+      "has_context": true
+    },
+    {
+      "question": "Como Sócrates defende sua vida filosófica na Apologia de Platão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 1656,
+      "latency_s": 175.034,
+      "n_chunks": 6,
+      "answer_preview": "Resumo a partir das evidências fornecidas:\n\nComo Sócrates defende sua vida filosófica na Apologia (segundo o texto platônico apresentado)\n\n- Recusa da retórica e defesa da verdade: o texto apresenta Sócrates como “inimigo da retórica” e apologiza pelo seu estilo coloquial (EVIDÊNCIA 6). Ele contrapõ",
+      "has_context": true
+    },
+    {
+      "question": "O que é eudaimonia para Aristóteles na Ética a Nicômaco?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 8438,
+      "latency_s": 184.634,
+      "n_chunks": 6,
+      "answer_preview": "Versão revista, fiel às evidências fornecidas:\n\n- O que é eudaimonia (segundo os trechos recuperados): a Ética trata do bem para a vida humana e da conduta prática do homem; nela Aristóteles investiga o que constitui a vida mais desejável e a realização da felicidade (cf. EVIDÊNCIA 1, EVIDÊNCIA 2, E",
+      "has_context": true
+    },
+    {
+      "question": "Como Aristóteles define o ser humano como animal político na Política?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 6762,
+      "latency_s": 143.986,
+      "n_chunks": 6,
+      "answer_preview": "Resposta curta — evidência insuficiente para uma definição textual: nos trechos fornecidos não aparece a formulação explícita \"o homem é um animal político\" nem uma definição direta e completa desse conceito. Portanto não posso reproduzir uma definição formal a partir deste material.\n\nO que as evidê",
+      "has_context": true
+    },
+    {
+      "question": "Qual é o papel da memória nas Confissões de Agostinho?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 3296,
+      "latency_s": 174.688,
+      "n_chunks": 6,
+      "answer_preview": "Síntese baseada apenas nas passagens fornecidas\n\nObservação preliminar: os fragmentos reunidos são parciais e limitados; a seguir limito‑me estritamente ao que neles aparece, sem supor desenvolvimentos não incluídos nas evidências.\n\nFunções da memória apontadas nas evidências\n\n- Rememorativo e moral",
+      "has_context": true
+    },
+    {
+      "question": "Quais são as Cinco Vias de Tomás de Aquino para provar a existência de Deus?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 17611,
+      "latency_s": 121.535,
+      "n_chunks": 6,
+      "answer_preview": "As evidências fornecidas não contêm o texto nem um resumo das Cinco Vias. Nos trechos recuperados aparece apenas, no sumário, a indicação de que a Parte I trata da “The Existence of God” (Questão 2), mas não há nas evidências os argumentos específicos de Tomás de Aquino.\n\nPortanto, com base exclusiv",
+      "has_context": true
+    },
+    {
+      "question": "Qual é a teoria de Raskolnikov sobre homens extraordinários em Crime e Castigo?",
+      "subset": "qa",
+      "student_level": "medio",
+      "gutenberg_id": 2554,
+      "latency_s": 163.335,
+      "n_chunks": 6,
+      "answer_preview": "Baseando-me apenas nas evidências fornecidas:\n\nResumo da teoria (segundo as falas e pensamentos atribuídos a Raskolnikov nas evidências):\n- Raskolnikov defende a ideia de que existe um tipo de \"homem extraordinário\" ou \"real genius\" que, por sua condição excepcional, pode transgredir normas ordinári",
+      "has_context": true
+    },
+    {
+      "question": "O que é o Grande Inquisidor em Os Irmãos Karamazov?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 28054,
+      "latency_s": 83.865,
+      "n_chunks": 6,
+      "answer_preview": "Não há informação nas evidências fornecidas sobre o personagem ou episódio chamado \"Grande Inquisidor\". Nas seis evidências apresentadas (trechos do índice e passagens do romance), não aparece menção ao \"Grande Inquisidor\" nem há descrição, citação ou contexto que permita responder à sua pergunta co",
+      "has_context": true
+    },
+    {
+      "question": "Qual é o papel do subterrâneo na filosofia do Homem do Subterrâneo de Dostoiévski?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 600,
+      "latency_s": 147.791,
+      "n_chunks": 6,
+      "answer_preview": "Síntese direta (com base apenas nas evidências fornecidas)\n\nO “subterrâneo” funciona sobretudo como metáfora e lugar existencial a partir do qual o narrador formula a sua filosofia — uma posição de retirada consciente que articula ambivalência, crítica social e autorreflexão contraditória. As evidên",
+      "has_context": true
+    },
+    {
+      "question": "Qual é a crise espiritual de Tolstói descrita em Uma Confissão?",
+      "subset": "qa",
+      "student_level": "superior",
+      "gutenberg_id": 20203,
+      "latency_s": 42.483,
+      "n_chunks": 0,
+      "answer_preview": "Desculpe, só consigo responder perguntas sobre obras literárias clássicas do domínio público. Tente perguntar sobre um título específico!",
+      "has_context": false
+    }
+  ]
+}
