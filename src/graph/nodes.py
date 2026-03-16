@@ -58,7 +58,7 @@ async def retriever(state: LitGraphState) -> dict:
     try:
         chunk_results = await tools["search_book_content"].ainvoke({
             "query": query,
-            "book_title": book_title,
+            "gutenberg_id": bib.gutenberg_id,
         })
     except Exception:
         chunk_results = []
@@ -264,18 +264,13 @@ def self_check(state: LitGraphState) -> dict:
     chunks = state.get("retrieved_chunks", [])
     attempts = state.get("self_check_attempts", 0)
 
-    if not chunks:
-        if attempts >= 1:
-            return {
-                "self_check_passed": False,
-                "final_answer": (
-                    "Não foi possível encontrar evidências suficientes. "
-                    "Tente reformular sua pergunta."
-                ),
-            }
+    if attempts >= 1:
         return {
             "self_check_passed": False,
-            "self_check_attempts": attempts + 1,
+            "final_answer": (
+                "Não foi possível encontrar evidências suficientes. "
+                "Tente reformular sua pergunta."
+            ),
         }
 
     result = llm_client.self_check_answer(

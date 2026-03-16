@@ -71,7 +71,7 @@ def get_book_philosophical_context(query: str) -> BookPhilosophicalContext:
 @server.tool()
 def search_book_content(
         query: str,
-        book_title: str | None = None,
+        gutenberg_id: int,
         top_k: int = 6,
 ) -> list[dict]:
     """
@@ -82,15 +82,15 @@ def search_book_content(
 
     Args:
         query: pergunta ou trecho a buscar (ex: 'O que motiva Raskolnikov?')
-        book_title: título canônico para filtrar a busca (ex: '2554_crime_and_punishment').
+        gutenberg_id: ID do livro no projeto Gutenberg para filtrar a busca (ex: 2554).
                     Se omitido, busca em toda a base indexada.
 
     Exemplos:
-        query='qual é o monólogo inicial do subsolo?', book_title='600_notes_from_underground'
-        query='descreva a batalha de Borodino', book_title='2600_war_and_peace'
+        query='qual é o monólogo inicial do subsolo?', gutenberg_id=600
+        query='descreva a batalha de Borodino', gutenberg_id=2600
         query='o que significa o leopardo na obra?'
     """
-    return retrieve_chunks(query=query, book_title=book_title, top_k=top_k)
+    return retrieve_chunks(query=query, gutenberg_id=gutenberg_id, top_k=top_k)
 
 
 if __name__ == "__main__":

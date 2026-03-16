@@ -30,7 +30,7 @@ def _get_collection() -> chromadb.Collection:
 
 def retrieve_chunks(
         query: str,
-        book_title: str | None = None,
+        gutenberg_id: int,
         top_k: int = 6,
 ) -> list[dict[str, Any]]:
     embedder = _get_embedder()
@@ -39,7 +39,7 @@ def retrieve_chunks(
     collection = _get_collection()
 
     where_filter: Where | None = (
-        {"book_title": {"$eq": book_title}} if book_title else None
+        {"gutenberg_id": {"$eq": gutenberg_id}} if gutenberg_id else None
     )
     results = collection.query(
         query_embeddings=query_embedding,
