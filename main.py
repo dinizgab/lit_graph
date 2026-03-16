@@ -7,6 +7,19 @@ from src.graph.graph import build_graph
 from src.graph.state import LitGraphState
 from langsmith import traceable
 
+
+NODE_LABELS = {
+    "supervisor":  "Interpretando sua pergunta...",
+    "retriever":   "Buscando referências no livro...",
+    "automation":  "Gerando guia de estudo...",
+    "safety":      "Verificando conteúdo...",
+    "answerer":    "Redigindo resposta...",
+    "self_check":  "Verificando evidências...",
+    "output":      "Finalizando...",
+    "refuse":      "Processando...",
+}
+
+
 st.set_page_config(
     page_title="LitGraph",
     page_icon="📖",
@@ -73,17 +86,32 @@ if prompt := st.chat_input("Pergunte sobre uma obra ou peça um guia de estudo�
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        with st.spinner("Consultando as fontes…"):
-            initial_state = LitGraphState({
-                "user_query": prompt,
-                "book_title": "",
-                "student_level": student_level if student_level in ("fundamental", "medio", "superior", "curioso") else "curioso",
-                "self_check_attempts": 0,
-                "enable_self_check": True
-            })
-            result = asyncio.run(run_graph(graph, initial_state))
-            final = result.get("final_answer") or result.get("error", "Sem resposta.")
+        initial_state = LitGraphState({
+            "user_query": prompt,
+            "book_title": "",
+            "student_level": student_level if student_level in ("fundamental", "medio", "superior", "curioso") else "curioso",
+            "self_check_attempts": 0,
+            "enable_self_check": True,
+        })
 
-        st.markdown(final)
+        result = [None]
 
-    st.session_state.messages.append({"role": "assistant", "content": final})
+        with st.status("Consultando as fontes…", expanded=True) as status:
+            async def stream():
+                
+                async for event in graph.astream_events(initial_state, version="v2"):
+                    if event["event"] == "on_chain_start":
+                        node = event.get("name", "")
+                        if node in NODE_LABELS:
+                            status.update(label=NODE_LABELS[node])
+                    elif event["event"] == "on_chain_end" and event.get("name") == "LangGraph":
+                        output = event.get("data", {}).get("output", {})
+                        result[0] = output.get("final_answer") or output.get("error", "Sem resposta.")
+
+            asyncio.run(stream())
+            status.update(label="Pronto!", state="complete", expanded=False)
+
+        st.markdown(result[0])
+
+    st.session_state.messages.append({"role": "assistant", "content": result[0]})
+    
